@@ -162,60 +162,83 @@ class MoodTracker {
         return labels[level] || '';
     }
 
-    async handleFormSubmit(e) {
-        e.preventDefault();
+    handleFormSubmit(event) {
+        event.preventDefault();
 
         if (!this.selectedMood) {
-            this.showError('Please select your mood level first.');
+            this.showError('Please select a mood level before submitting.');
             return;
         }
 
-        // Disable button during submission
-        this.setSubmitButtonState(false, 'Saving...');
+        const formData = new FormData();
+        formData.append('mood_level', this.selectedMood);
+        formData.append('notes', this.notesTextarea.value);
 
-        try {
-            const formData = new FormData(this.moodForm);
+        // Add CSRF token
+        const csrfToken = getCSRFToken();
+        if (csrfToken) {
+            formData.append('csrfmiddlewaretoken', csrfToken);
+        }
 
-            // Log the URL just before fetch
-            console.log('Fetching mood data to URL:', this.postUrl); 
+        // Disable submit button during submission
+        this.submitButton.disabled = true;
+        this.submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
 
-            const response = await fetch(this.postUrl, { 
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'X-CSRFToken': this.getCookie('csrftoken')
-                }
-            });
+        console.log('Fetching mood data to URL:', this.postUrl);
 
-            // Check if response is OK (200-299 status) before trying to parse JSON
-            if (!response.ok) {
-                const errorText = await response.text(); 
-                console.error('Server response not OK:', response.status, response.statusText, errorText);
-                if (errorText.startsWith('<!DOCTYPE html>')) {
-                    this.showError('Server returned an HTML error page. Check Django logs for details.');
-                } else {
-                    this.showError(`Server error (${response.status}): ${errorText || response.statusText}`);
-                }
-                return; 
+        fetch(this.postUrl, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRFToken': csrfToken || '',
             }
-
-            const data = await response.json();
-
+        })
+        .then(response => {
+            if (!response.ok) {
+                return response.text().then(text => {
+                    console.error('Server response not OK:', response.status, response.statusText, text);
+                    throw new Error(`Server error: ${response.status} - ${response.statusText}`);
+                });
+            }
+            return response.json();
+        })
+        .then(data => {
             if (data.status === 'success') {
                 this.showSuccessModal();
+                this.generateMoodStats(); // Refresh stats after submission
             } else {
-                this.showError(data.error || 'An error occurred while saving your mood.');
+                throw new Error(data.error || 'Unknown error occurred');
             }
-        } catch (error) {
+        })
+        .catch(error => {
             console.error('Error submitting mood:', error);
-            // More specific error message for JSON parsing failures
-            if (error instanceof SyntaxError) {
-                this.showError('Could not process server response. Expected JSON, got invalid data.');
-            } else {
-                this.showError('Network error. Please check your connection and try again.');
+            this.showErrorModal(error.message);
+        })
+        .finally(() => {
+            // Re-enable submit button
+            this.submitButton.disabled = false;
+            this.submitButton.innerHTML = '<i class="fas fa-save"></i> Save Mood Entry';
+        });
+    }
+
+    handleKeyPress(event) {
+        if (event.key === 'Enter' && (event.ctrlKey || event.metaKey)) {
+            event.preventDefault();
+            if (this.selectedMood) {
+                this.handleFormSubmit(event);
             }
-        } finally {
-            this.setSubmitButtonState(true, 'Save Mood Entry');
+        }
+    }
+
+    handleNotesKeydown(event) {
+        // Allow normal behavior for enter key in textarea
+        if (event.key === 'Enter' && !event.ctrlKey && !event.metaKey) {
+            return; // Allow normal line break
+        }
+
+        // Handle Ctrl+Enter or Cmd+Enter to submit
+        if (event.key === 'Enter' && (event.ctrlKey || event.metaKey)) {
+            this.handleKeyPress(event);
         }
     }
 
@@ -561,4 +584,21 @@ function handleKeyPress(event) {
             moodTrackerInstance.handleFormSubmit(event);
         }
     }
+}
+
+// Function to get CSRF token from cookie
+function getCSRFToken() {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, 10) === ('csrftoken=')) {
+                cookieValue = decodeURIComponent(cookie.substring(10));
+                break;
+            }
+        }
+    }
+    return cookieValue;
 }

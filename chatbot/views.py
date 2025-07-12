@@ -132,7 +132,7 @@ def process_message(request):
         return JsonResponse({'error': 'Internal server error processing message.'}, status=500)
 
 def mood_tracker(request):
-    """Mood tracking interface"""
+    """Mood tracking interface - accessible to all users"""
     # Ensure a session_id exists for the current user/session for consistent tracking
     current_session_id_str = request.session.get('conversation_id')
     if not current_session_id_str:
@@ -198,7 +198,7 @@ def mood_tracker(request):
     })
 
 def resources(request):
-    """Mental health resources page"""
+    """Mental health resources page - accessible to all users"""
     emergency_resources = SupportResource.objects.filter(is_emergency=True)
     general_resources = SupportResource.objects.filter(is_emergency=False)
 
