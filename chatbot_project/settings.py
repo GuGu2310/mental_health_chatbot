@@ -121,7 +121,13 @@ CORS_ALLOWED_ORIGINS = [
 CSRF_TRUSTED_ORIGINS = [
     'https://*.replit.dev',
     'https://*.replit.app',
+    'https://*.replit.co',
 ]
+
+# Additional security settings for deployment
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None
+CSRF_COOKIE_SECURE = False  # Set to True if using HTTPS only
+SESSION_COOKIE_SECURE = False  # Set to True if using HTTPS only
 
 # OpenAI Configuration
 OPENAI_API_KEY = config('OPENAI_API_KEY', default='')
