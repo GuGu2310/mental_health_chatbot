@@ -441,6 +441,71 @@ class MoodTracker {
     }
 }
 
+// Global function to delete mood entry
+async function deleteMoodEntry(moodId) {
+    if (!confirm('Are you sure you want to delete this mood entry? This action cannot be undone.')) {
+        return;
+    }
+
+    try {
+        const response = await fetch(`/mood-tracker/delete/${moodId}/`, {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': moodTrackerInstance.getCookie('csrftoken')
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        
+        if (data.status === 'success') {
+            // Remove the mood entry from the DOM
+            const moodEntryElement = document.getElementById(`mood-entry-${moodId}`);
+            if (moodEntryElement) {
+                moodEntryElement.style.animation = 'fadeOut 0.3s ease-out';
+                setTimeout(() => {
+                    moodEntryElement.remove();
+                    // Regenerate stats after deletion
+                    if (moodTrackerInstance) {
+                        moodTrackerInstance.generateMoodStats();
+                    }
+                    // Show success message
+                    showDeleteSuccessMessage();
+                }, 300);
+            }
+        } else {
+            alert('Error deleting mood entry: ' + (data.error || 'Unknown error'));
+        }
+    } catch (error) {
+        console.error('Error deleting mood entry:', error);
+        alert('Failed to delete mood entry. Please try again.');
+    }
+}
+
+// Show success message for deletion
+function showDeleteSuccessMessage() {
+    const alertDiv = document.createElement('div');
+    alertDiv.className = 'alert alert-success alert-dismissible fade show position-fixed';
+    alertDiv.style.top = '20px';
+    alertDiv.style.right = '20px';
+    alertDiv.style.zIndex = '9999';
+    alertDiv.innerHTML = `
+        <i class="fas fa-check-circle"></i> Mood entry deleted successfully!
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    `;
+    
+    document.body.appendChild(alertDiv);
+    
+    setTimeout(() => {
+        if (alertDiv.parentNode) {
+            alertDiv.remove();
+        }
+    }, 3000);
+}
+
 // Global variables for onclick handlers to ensure they are accessible from HTML
 let moodTrackerInstance;
 

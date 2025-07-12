@@ -1,57 +1,56 @@
 
 {% extends 'chatbot/base.html' %}
 
-{% block title %}Delete Account - Mental Health Chatbot{% endblock %}
+{% block title %}Delete Account - Mental Health Support{% endblock %}
 
 {% block content %}
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <div class="card border-danger">
+            <div class="card shadow border-danger">
                 <div class="card-header bg-danger text-white text-center">
                     <h4><i class="fas fa-exclamation-triangle"></i> Delete Account</h4>
-                    <small>This action cannot be undone</small>
+                    <p class="mb-0">This action cannot be undone</p>
                 </div>
                 <div class="card-body">
-                    {% if messages %}
-                        {% for message in messages %}
-                            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-                                {{ message }}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                            </div>
-                        {% endfor %}
-                    {% endif %}
-                    
-                    <div class="alert alert-danger">
-                        <h6><i class="fas fa-warning"></i> Warning!</h6>
-                        <p>Deleting your account will permanently remove:</p>
-                        <ul class="mb-0">
+                    <div class="alert alert-warning">
+                        <i class="fas fa-warning"></i>
+                        <strong>Warning:</strong> Deleting your account will permanently remove:
+                        <ul class="mt-2 mb-0">
                             <li>All your mood tracking data</li>
-                            <li>All your chat conversations</li>
-                            <li>Your user profile and settings</li>
+                            <li>Chat conversation history</li>
+                            <li>Account information</li>
                         </ul>
                     </div>
-                    
+
+                    <div class="text-center mb-4">
+                        <h5>Are you sure you want to delete your account, {{ user.username }}?</h5>
+                    </div>
+
                     <form method="post">
                         {% csrf_token %}
-                        <div class="mb-3">
-                            <label for="password" class="form-label">
-                                <strong>Enter your password to confirm deletion:</strong>
-                            </label>
-                            <input type="password" class="form-control" name="password" required
-                                   placeholder="Your current password">
-                        </div>
-                        
-                        <div class="d-flex gap-2">
-                            <button type="submit" class="btn btn-danger">
-                                <i class="fas fa-trash"></i> Yes, Delete My Account
-                            </button>
-                            <a href="{% url 'profile' %}" class="btn btn-secondary">
-                                <i class="fas fa-arrow-left"></i> Cancel
-                            </a>
+                        <div class="row">
+                            <div class="col-6">
+                                <a href="{% url 'mood_tracker' %}" class="btn btn-secondary w-100">
+                                    <i class="fas fa-arrow-left"></i> Cancel
+                                </a>
+                            </div>
+                            <div class="col-6">
+                                <button type="submit" class="btn btn-danger w-100" 
+                                        onclick="return confirm('Are you absolutely sure? This action cannot be undone!')">
+                                    <i class="fas fa-trash-alt"></i> Delete Account
+                                </button>
+                            </div>
                         </div>
                     </form>
                 </div>
+            </div>
+
+            <div class="text-center mt-3">
+                <small class="text-muted">
+                    <i class="fas fa-info-circle"></i> 
+                    If you're having issues, consider contacting support instead
+                </small>
             </div>
         </div>
     </div>

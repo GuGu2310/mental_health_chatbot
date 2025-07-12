@@ -1,71 +1,70 @@
 
 {% extends 'chatbot/base.html' %}
 
-{% block title %}Sign In - Mental Health Chatbot{% endblock %}
+{% block title %}Sign In - Mental Health Support{% endblock %}
 
 {% block content %}
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <div class="card">
+            <div class="card shadow">
                 <div class="card-header bg-success text-white text-center">
-                    <h4><i class="fas fa-sign-in-alt"></i> Sign In</h4>
-                    <small>Welcome back to your mental health journey</small>
+                    <h4><i class="fas fa-sign-in-alt"></i> Welcome Back</h4>
+                    <p class="mb-0">Sign in to access your mood tracking and chat history</p>
                 </div>
                 <div class="card-body">
                     {% if messages %}
                         {% for message in messages %}
-                            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                            <div class="alert alert-{{ message.tags }} alert-dismissible fade show">
                                 {{ message }}
                                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                             </div>
                         {% endfor %}
                     {% endif %}
-                    
+
                     <form method="post">
                         {% csrf_token %}
                         <div class="mb-3">
                             <label for="{{ form.username.id_for_label }}" class="form-label">Username</label>
-                            <div class="input-group">
-                                <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                {{ form.username }}
-                            </div>
+                            <input type="text" class="form-control" id="{{ form.username.id_for_label }}" 
+                                   name="username" placeholder="Enter your username" required>
                             {% if form.username.errors %}
-                                <div class="text-danger small">
-                                    {% for error in form.username.errors %}{{ error }}{% endfor %}
-                                </div>
+                                <div class="text-danger small">{{ form.username.errors }}</div>
                             {% endif %}
                         </div>
-                        
+
                         <div class="mb-3">
                             <label for="{{ form.password.id_for_label }}" class="form-label">Password</label>
-                            <div class="input-group">
-                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                                {{ form.password }}
-                            </div>
+                            <input type="password" class="form-control" id="{{ form.password.id_for_label }}" 
+                                   name="password" placeholder="Enter your password" required>
                             {% if form.password.errors %}
-                                <div class="text-danger small">
-                                    {% for error in form.password.errors %}{{ error }}{% endfor %}
-                                </div>
+                                <div class="text-danger small">{{ form.password.errors }}</div>
                             {% endif %}
                         </div>
-                        
+
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-success">
+                            <button type="submit" class="btn btn-success btn-lg">
                                 <i class="fas fa-sign-in-alt"></i> Sign In
                             </button>
                         </div>
                     </form>
-                    
+
                     <hr>
                     <div class="text-center">
                         <p class="mb-0">Don't have an account? 
                             <a href="{% url 'register' %}" class="text-decoration-none">
-                                <i class="fas fa-user-plus"></i> Create Account
+                                <i class="fas fa-user-plus"></i> Create one here
                             </a>
                         </p>
                     </div>
                 </div>
+            </div>
+
+            <div class="text-center mt-3">
+                <small class="text-muted">
+                    <i class="fas fa-info-circle"></i> 
+                    You can also use the app without an account, but your data won't be saved
+                </small>
             </div>
         </div>
     </div>

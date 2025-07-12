@@ -37,43 +37,42 @@
                     </li>
                 </ul>
 
-                    <!-- Authentication Links -->
-                    <ul class="navbar-nav ms-auto">
-                        {% if user.is_authenticated %}
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
-                                   data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fas fa-user"></i> {{ user.username }}
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><a class="dropdown-item" href="{% url 'profile' %}">
-                                        <i class="fas fa-user"></i> My Profile
-                                    </a></li>
-                                    <li><a class="dropdown-item" href="{% url 'mood_tracker' %}">
-                                        <i class="fas fa-heart"></i> Mood Tracker
-                                    </a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="{% url 'logout' %}">
-                                        <i class="fas fa-sign-out-alt"></i> Logout
-                                    </a></li>
-                                </ul>
-                            </li>
-                        {% else %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'login' %}">
-                                    <i class="fas fa-sign-in-alt"></i> Sign In
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'register' %}">
-                                    <i class="fas fa-user-plus"></i> Sign Up
-                                </a>
-                            </li>
-                        {% endif %}
-                    </ul>
-                </div>
+                <!-- User Authentication Links -->
+                <ul class="navbar-nav ms-auto">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-user"></i> {{ user.username }}
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{% url 'mood_tracker' %}">
+                                    <i class="fas fa-heart"></i> My Mood Tracker
+                                </a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="{% url 'delete_account' %}">
+                                    <i class="fas fa-trash-alt"></i> Delete Account
+                                </a></li>
+                                <li><a class="dropdown-item" href="{% url 'logout' %}">
+                                    <i class="fas fa-sign-out-alt"></i> Logout
+                                </a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">
+                                <i class="fas fa-sign-in-alt"></i> Sign In
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'register' %}">
+                                <i class="fas fa-user-plus"></i> Sign Up
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
             </div>
-        </nav>
+        </div>
+    </nav>
 
     <main>
         {% block content %}
