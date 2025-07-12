@@ -31,29 +31,50 @@
                         <a class="nav-link" href="{% url 'mood_tracker' %}"><i class="fas fa-heart"></i> Mood Tracker</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'resources' %}"><i class="fas fa-life-ring"></i> Resources</a>
-                    </li>
-                    {# Add user authentication links here if implemented #}
-                    {% if user.is_authenticated %}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-user-circle"></i> {{ user.username }}
+                        <a class="nav-link" href="{% url 'resources' %}">
+                            <i class="fas fa-life-ring"></i> Resources
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Profile</a></li> {# Link to user profile if you create one #}
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="{% url 'admin:index' %}">Admin</a></li>
-                            <li><a class="dropdown-item" href="#">Logout</a></li> {# Implement logout view #}
-                        </ul>
                     </li>
-                    {% else %}
-                    {# You can add login/signup links if you implement user auth #}
-                    {% endif %}
                 </ul>
+
+                    <!-- Authentication Links -->
+                    <ul class="navbar-nav ms-auto">
+                        {% if user.is_authenticated %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
+                                   data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-user"></i> {{ user.username }}
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="{% url 'profile' %}">
+                                        <i class="fas fa-user"></i> My Profile
+                                    </a></li>
+                                    <li><a class="dropdown-item" href="{% url 'mood_tracker' %}">
+                                        <i class="fas fa-heart"></i> Mood Tracker
+                                    </a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="{% url 'logout' %}">
+                                        <i class="fas fa-sign-out-alt"></i> Logout
+                                    </a></li>
+                                </ul>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'login' %}">
+                                    <i class="fas fa-sign-in-alt"></i> Sign In
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'register' %}">
+                                    <i class="fas fa-user-plus"></i> Sign Up
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-    
+        </nav>
+
     <main>
         {% block content %}
         {# Content from child templates will go here #}
@@ -70,7 +91,7 @@
             </div>
         </div>
     </footer>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     {# Load specific JS for each page #}
     {% if request.resolver_match.view_name == 'chat' %}

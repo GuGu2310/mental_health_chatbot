@@ -247,8 +247,20 @@
                 <div class="card-header bg-info text-white">
                     <h5 class="mb-0">
                         <i class="fas fa-heart"></i> Daily Mood Tracker
+                        {% if user.is_authenticated %}
+                            <small class="float-end">Welcome, {{ user.username }}!</small>
+                        {% endif %}
                     </h5>
                     <small>Track your emotional well-being to identify patterns and progress</small>
+                    {% if not user.is_authenticated %}
+                        <div class="mt-2">
+                            <small>
+                                <i class="fas fa-info-circle"></i> 
+                                <a href="{% url 'register' %}" class="text-white">Create an account</a> 
+                                to save your mood history permanently!
+                            </small>
+                        </div>
+                    {% endif %}
                 </div>
                 
                 <div class="card-body">

@@ -3,10 +3,14 @@ from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
-from django.contrib.auth import login
-from django.contrib.auth.forms import UserCreationForm
-from .models import Conversation, Message, MoodEntry, SupportResource
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.models import User
+from django.contrib import messages
+from django.db import models
+from .models import Conversation, Message, MoodEntry, SupportResource, UserProfile
 from .ai_processor import MentalHealthChatbot
+from .forms import CustomUserCreationForm
 import json
 import uuid 
 import logging
@@ -222,3 +226,113 @@ def clear_chat(request):
             del request.session['conversation_id']
     
     return redirect('chat')
+
+def register_view(request):
+    """User registration"""
+    if request.user.is_authenticated:
+        return redirect('index')
+    
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            # Create user profile
+            UserProfile.objects.create(
+                user=user,
+                consent_given=True,
+                privacy_accepted=True
+            )
+            # Log the user in
+            login(request, user)
+            messages.success(request, 'Account created successfully! Welcome!')
+            return redirect('mood_tracker')
+        else:
+            messages.error(request, 'Please correct the errors below.')
+    else:
+        form = CustomUserCreationForm()
+    
+    return render(request, 'chatbot/register.html', {'form': form})
+
+def login_view(request):
+    """User login"""
+    if request.user.is_authenticated:
+        return redirect('index')
+    
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                messages.success(request, f'Welcome back, {username}!')
+                # Redirect to next page if specified, otherwise mood tracker
+                next_page = request.GET.get('next', 'mood_tracker')
+                return redirect(next_page)
+        else:
+            messages.error(request, 'Invalid username or password.')
+    else:
+        form = AuthenticationForm()
+    
+    return render(request, 'chatbot/login.html', {'form': form})
+
+def logout_view(request):
+    """User logout"""
+    if request.user.is_authenticated:
+        messages.success(request, 'You have been logged out successfully.')
+        logout(request)
+    return redirect('index')
+
+@login_required
+def profile_view(request):
+    """User profile management"""
+    try:
+        profile = request.user.userprofile
+    except UserProfile.DoesNotExist:
+        profile = UserProfile.objects.create(user=request.user)
+    
+    # Get user's mood statistics
+    total_moods = MoodEntry.objects.filter(user=request.user).count()
+    recent_moods = MoodEntry.objects.filter(user=request.user).order_by('-created_at')[:5]
+    
+    if total_moods > 0:
+        avg_mood = MoodEntry.objects.filter(user=request.user).aggregate(
+            avg_mood=models.Avg('mood_level')
+        )['avg_mood']
+    else:
+        avg_mood = 0
+    
+    context = {
+        'profile': profile,
+        'total_moods': total_moods,
+        'recent_moods': recent_moods,
+        'avg_mood': round(avg_mood, 1) if avg_mood else 0
+    }
+    
+    return render(request, 'chatbot/profile.html', context)
+
+@login_required
+def delete_account_view(request):
+    """Delete user account and all associated data"""
+    if request.method == 'POST':
+        password = request.POST.get('password')
+        if request.user.check_password(password):
+            # Delete all user's mood entries
+            MoodEntry.objects.filter(user=request.user).delete()
+            # Delete all user's conversations
+            Conversation.objects.filter(user=request.user).delete()
+            # Delete user profile
+            try:
+                request.user.userprofile.delete()
+            except UserProfile.DoesNotExist:
+                pass
+            # Delete the user account
+            username = request.user.username
+            request.user.delete()
+            messages.success(request, f'Account {username} has been permanently deleted.')
+            return redirect('index')
+        else:
+            messages.error(request, 'Incorrect password. Account deletion cancelled.')
+    
+    return render(request, 'chatbot/delete_account.html')

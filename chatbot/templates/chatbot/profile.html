@@ -1,0 +1,169 @@
+
+{% extends 'chatbot/base.html' %}
+
+{% block title %}My Profile - Mental Health Chatbot{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-user"></i> My Profile
+                    </h5>
+                    <small>Manage your account and view your progress</small>
+                </div>
+                <div class="card-body">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6><i class="fas fa-info-circle"></i> Account Information</h6>
+                            <table class="table table-borderless">
+                                <tr>
+                                    <td><strong>Username:</strong></td>
+                                    <td>{{ user.username }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Email:</strong></td>
+                                    <td>{{ user.email|default:"Not provided" }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Member since:</strong></td>
+                                    <td>{{ user.date_joined|date:"F d, Y" }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Last login:</strong></td>
+                                    <td>{{ user.last_login|date:"F d, Y g:i A"|default:"Never" }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <h6><i class="fas fa-chart-line"></i> Mood Tracking Stats</h6>
+                            <table class="table table-borderless">
+                                <tr>
+                                    <td><strong>Total entries:</strong></td>
+                                    <td><span class="badge bg-primary">{{ total_moods }}</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Average mood:</strong></td>
+                                    <td>
+                                        {% if avg_mood > 0 %}
+                                            <span class="badge 
+                                                {% if avg_mood <= 2 %}bg-danger
+                                                {% elif avg_mood <= 3 %}bg-warning
+                                                {% elif avg_mood <= 4 %}bg-info
+                                                {% else %}bg-success{% endif %}">
+                                                {{ avg_mood }}/5
+                                            </span>
+                                        {% else %}
+                                            <span class="text-muted">No data</span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <hr>
+                    
+                    <div class="d-flex gap-2 flex-wrap">
+                        <a href="{% url 'mood_tracker' %}" class="btn btn-primary">
+                            <i class="fas fa-heart"></i> Track Mood
+                        </a>
+                        <a href="{% url 'chat' %}" class="btn btn-success">
+                            <i class="fas fa-comments"></i> Chat
+                        </a>
+                        <a href="{% url 'resources' %}" class="btn btn-info">
+                            <i class="fas fa-life-ring"></i> Resources
+                        </a>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                            <i class="fas fa-trash"></i> Delete Account
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4">
+            {% if recent_moods %}
+            <div class="card">
+                <div class="card-header bg-secondary text-white">
+                    <h6 class="mb-0">
+                        <i class="fas fa-history"></i> Recent Moods
+                    </h6>
+                </div>
+                <div class="card-body">
+                    {% for mood in recent_moods %}
+                        <div class="d-flex justify-content-between align-items-center mb-2 p-2 bg-light rounded">
+                            <div class="d-flex align-items-center">
+                                <span class="me-2">
+                                    {% if mood.mood_level == 1 %}😢
+                                    {% elif mood.mood_level == 2 %}😟
+                                    {% elif mood.mood_level == 3 %}😐
+                                    {% elif mood.mood_level == 4 %}😊
+                                    {% elif mood.mood_level == 5 %}😄
+                                    {% endif %}
+                                </span>
+                                <small class="text-muted">
+                                    {{ mood.created_at|date:"M d, g:i A" }}
+                                </small>
+                            </div>
+                            <span class="badge bg-secondary">{{ mood.mood_level }}/5</span>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Delete Account Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title">
+                    <i class="fas fa-exclamation-triangle"></i> Delete Account
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger">
+                    <strong>Warning:</strong> This action cannot be undone!
+                </div>
+                <p>Are you sure you want to permanently delete your account? This will:</p>
+                <ul>
+                    <li>Delete all your mood tracking data</li>
+                    <li>Delete all your chat conversations</li>
+                    <li>Remove your account permanently</li>
+                </ul>
+                <form method="post" action="{% url 'delete_account' %}">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Enter your password to confirm:</label>
+                        <input type="password" class="form-control" name="password" required>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fas fa-trash"></i> Yes, Delete My Account
+                        </button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
