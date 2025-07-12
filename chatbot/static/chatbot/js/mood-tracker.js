@@ -14,39 +14,39 @@ class MoodTracker {
         // Reads from data-post-url on the form.
         // The HTML now explicitly provides data-post-url="/mood-tracker/", bypassing template tag issues.
         this.postUrl = this.moodForm ? this.moodForm.dataset.postUrl : '/mood-tracker/'; 
-        
+
         // Configuration
         this.config = {
             maxNotesLength: 500,
             animationDelay: 100,
             feedbackDuration: 3000
         };
-        
+
         this.init();
     }
-    
+
     init() {
         this.setupEventListeners();
         this.generateMoodStats();
         this.initializeAnimations();
         this.updateCharCount();
-        
+
         console.log('Mood Tracker initialized');
         console.log('MoodTracker postUrl:', this.postUrl); 
     }
-    
+
     setupEventListeners() {
         // Character counter for notes
         if (this.notesTextarea && this.charCount) {
             this.notesTextarea.addEventListener('input', () => this.updateCharCount());
             this.notesTextarea.addEventListener('keydown', (e) => this.handleNotesKeydown(e));
         }
-        
+
         // Form submission
         if (this.moodForm) {
             this.moodForm.addEventListener('submit', (e) => this.handleFormSubmit(e));
         }
-        
+
         // Mood option click events: Use event delegation or attach directly
         this.moodOptions.forEach(option => {
             // Remove onclick from HTML, attach event listener here
@@ -54,17 +54,17 @@ class MoodTracker {
             option.addEventListener('mouseenter', () => this.handleMoodHover(option));
             option.addEventListener('mouseleave', () => this.handleMoodLeave(option));
         });
-        
+
         // Keyboard navigation for mood options
         this.setupKeyboardNavigation();
     }
-    
+
     setupKeyboardNavigation() {
         this.moodOptions.forEach((option, index) => {
             option.setAttribute('tabindex', '0'); 
             option.setAttribute('role', 'radio'); 
             option.setAttribute('aria-checked', 'false'); 
-            
+
             option.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
@@ -79,7 +79,7 @@ class MoodTracker {
             });
         });
     }
-    
+
     handleNotesKeydown(e) {
         // Allow Ctrl+Enter to submit form
         if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
@@ -89,15 +89,15 @@ class MoodTracker {
             }
         }
     }
-    
+
     updateCharCount() {
         if (!this.notesTextarea || !this.charCount) return;
-        
+
         const currentLength = this.notesTextarea.value.length;
         const maxLength = this.config.maxNotesLength;
-        
+
         this.charCount.textContent = currentLength;
-        
+
         // Update styling based on character count
         this.charCount.className = '';
         if (currentLength > maxLength * 0.9) {
@@ -107,21 +107,21 @@ class MoodTracker {
         } else {
             this.charCount.classList.add('text-muted');
         }
-        
+
         // Prevent exceeding max length
         if (currentLength > maxLength) {
             this.notesTextarea.value = this.notesTextarea.value.substring(0, maxLength);
             this.showFeedback('Maximum character limit reached', 'warning');
         }
     }
-    
+
     selectMood(level) {
         // Remove previous selection
         this.moodOptions.forEach(option => {
             option.classList.remove('selected');
             option.setAttribute('aria-checked', 'false');
         });
-        
+
         // Add selection to clicked option
         const selectedOption = document.querySelector(`[data-mood="${level}"]`);
         if (selectedOption) {
@@ -129,28 +129,28 @@ class MoodTracker {
             selectedOption.setAttribute('aria-checked', 'true');
             selectedOption.focus(); 
         }
-        
+
         // Set hidden input value
         document.getElementById('mood_level').value = level;
         this.selectedMood = level;
-        
+
         // Enable submit button
         if (this.submitButton) {
             this.submitButton.disabled = false;
         }
-        
+
         // Provide immediate visual/auditory feedback (for accessibility)
         this.showFeedback(`Selected mood: ${this.getMoodLabel(level)}`, 'info');
     }
-    
+
     handleMoodHover(option) {
         // Add subtle hover animation or feedback if needed
     }
-    
+
     handleMoodLeave(option) {
         // Remove hover feedback
     }
-    
+
     getMoodLabel(level) {
         const labels = {
             1: 'Very Sad',
@@ -161,32 +161,36 @@ class MoodTracker {
         };
         return labels[level] || '';
     }
-    
+
     async handleFormSubmit(e) {
         e.preventDefault();
-        
+
         if (!this.selectedMood) {
             this.showError('Please select your mood level first.');
             return;
         }
-        
+
         // Disable button during submission
         this.setSubmitButtonState(false, 'Saving...');
-        
+
         try {
             const formData = new FormData(this.moodForm);
-            
+
             // Log the URL just before fetch
             console.log('Fetching mood data to URL:', this.postUrl); 
-            
+
+            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]')?.value || 
+                         document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') ||
+                         this.getCookie('csrftoken');
+
             const response = await fetch(this.postUrl, { 
                 method: 'POST',
                 body: formData,
                 headers: {
-                    'X-CSRFToken': this.getCookie('csrftoken')
+                    'X-CSRFToken': csrfToken
                 }
             });
-            
+
             // Check if response is OK (200-299 status) before trying to parse JSON
             if (!response.ok) {
                 const errorText = await response.text(); 
@@ -200,7 +204,7 @@ class MoodTracker {
             }
 
             const data = await response.json();
-            
+
             if (data.status === 'success') {
                 this.showSuccessModal();
             } else {
@@ -218,7 +222,7 @@ class MoodTracker {
             this.setSubmitButtonState(true, 'Save Mood Entry');
         }
     }
-    
+
     setSubmitButtonState(enabled, text) {
         if (this.submitButton) {
             this.submitButton.disabled = !enabled;
@@ -227,50 +231,50 @@ class MoodTracker {
                 : `<i class="fas fa-spinner fa-spin"></i> ${text}`;
         }
     }
-    
+
     showSuccessModal() {
         const modal = new bootstrap.Modal(document.getElementById('successModal'));
         modal.show();
     }
-    
+
     showError(message) {
         document.getElementById('error-message').textContent = message;
         const modal = new bootstrap.Modal(document.getElementById('errorModal'));
         modal.show();
     }
-    
+
     resetForm() {
         // Reset form
         this.moodForm.reset();
         this.selectedMood = null;
-        
+
         // Remove selections
         this.moodOptions.forEach(option => {
             option.classList.remove('selected');
             option.setAttribute('aria-checked', 'false');
         });
-        
+
         // Disable submit button
         if (this.submitButton) {
             this.submitButton.disabled = true;
         }
-        
+
         // Reset character count
         this.updateCharCount();
-        
+
         // Focus on the first mood option for accessibility after reset
         if (this.moodOptions.length > 0) {
             this.moodOptions[0].focus();
         }
-        
+
         // Re-generate mood stats in case new entry needs to be reflected
         this.generateMoodStats();
     }
-    
+
     generateMoodStats() {
         const statsContainer = document.getElementById('mood-stats');
         if (!statsContainer) return;
-        
+
         const moodEntries = document.querySelectorAll('.mood-entry');
         if (moodEntries.length === 0) {
             statsContainer.innerHTML = `
@@ -282,24 +286,24 @@ class MoodTracker {
             `;
             return;
         }
-        
+
         const stats = this.calculateStats(moodEntries);
         this.renderStats(statsContainer, stats);
     }
-    
+
     calculateStats(entries) {
         const moods = Array.from(entries).map(entry => {
             const classList = Array.from(entry.classList);
             const moodClass = classList.find(cls => cls.startsWith('mood-'));
             return parseInt(moodClass?.split('-')[1] || 0);
         }).filter(mood => mood > 0);
-        
+
         if (moods.length === 0) return null;
-        
+
         const average = moods.reduce((sum, mood) => sum + mood, 0) / moods.length;
         const mostCommon = this.getMostCommon(moods);
         const trend = this.calculateTrend(moods);
-        
+
         return {
             totalEntries: moods.length,
             averageMood: average.toFixed(1),
@@ -307,12 +311,12 @@ class MoodTracker {
             trend: trend
         };
     }
-    
+
     getMostCommon(arr) {
         const counts = {};
         let maxCount = 0;
         let mostCommon = [];
-        
+
         arr.forEach(item => {
             counts[item] = (counts[item] || 0) + 1;
             if (counts[item] > maxCount) {
@@ -322,43 +326,43 @@ class MoodTracker {
                 mostCommon.push(item);
             }
         });
-        
+
         // Return a single value or handle multiple common moods as needed
         return mostCommon.length === 1 ? mostCommon[0] : mostCommon[0]; // Simplification for display
     }
-    
+
     calculateTrend(moods) {
         if (moods.length < 2) return 'stable';
-        
+
         // Use a simple moving average for trend over the last few entries
         const trendWindow = Math.min(moods.length, 5); // Look at last 5 entries or fewer if not enough
         const recentMoods = moods.slice(-trendWindow);
         const earlierMoods = moods.slice(0, trendWindow);
-        
+
         const recentAvg = recentMoods.reduce((sum, mood) => sum + mood, 0) / recentMoods.length;
         const earlierAvg = earlierMoods.reduce((sum, mood) => sum + mood, 0) / earlierMoods.length;
-        
+
         const threshold = 0.3; // Define a threshold for significant change
-        
+
         if (recentAvg > earlierAvg + threshold) return 'improving';
         if (recentAvg < earlierAvg - threshold) return 'declining';
         return 'stable';
     }
-    
+
     renderStats(container, stats) {
         if (!stats) {
             container.innerHTML = '<p class="text-muted text-center py-4">No sufficient data for statistics.</p>';
             return;
         }
-        
+
         const trendIcons = {
             'improving': { icon: 'fa-arrow-up', color: 'text-success' },
             'declining': { icon: 'fa-arrow-down', color: 'text-danger' },
             'stable': { icon: 'fa-minus', color: 'text-info' }
         };
-        
+
         const trendInfo = trendIcons[stats.trend];
-        
+
         container.innerHTML = `
             <div class="col-md-3 col-6 mb-3">
                 <div class="stat-card">
@@ -388,7 +392,7 @@ class MoodTracker {
             </div>
         `;
     }
-    
+
     initializeAnimations() {
         // Fade in mood options on load
         this.moodOptions.forEach((option, index) => {
@@ -401,7 +405,7 @@ class MoodTracker {
             }, index * this.config.animationDelay);
         });
     }
-    
+
     showFeedback(message, type = 'info', duration = this.config.feedbackDuration) {
         const feedbackArea = document.getElementById('feedback-area'); // You might need to add this div in your HTML
         if (!feedbackArea) {
@@ -423,7 +427,7 @@ class MoodTracker {
             bootstrap.Alert.getInstance(alertDiv)?.close();
         }, duration);
     }
-    
+
     // Add getCookie method as it's used in handleFormSubmit
     getCookie(name) {
         let cookieValue = null;
@@ -460,7 +464,7 @@ async function deleteMoodEntry(moodId) {
         }
 
         const data = await response.json();
-        
+
         if (data.status === 'success') {
             // Remove the mood entry from the DOM
             const moodEntryElement = document.getElementById(`mood-entry-${moodId}`);
@@ -496,9 +500,9 @@ function showDeleteSuccessMessage() {
         <i class="fas fa-check-circle"></i> Mood entry deleted successfully!
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     `;
-    
+
     document.body.appendChild(alertDiv);
-    
+
     setTimeout(() => {
         if (alertDiv.parentNode) {
             alertDiv.remove();

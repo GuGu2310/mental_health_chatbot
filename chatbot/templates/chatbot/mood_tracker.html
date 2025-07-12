@@ -11,7 +11,7 @@
         flex-wrap: wrap;
         gap: 10px;
     }
-    
+
     .mood-option {
         text-align: center;
         cursor: pointer;
@@ -25,25 +25,25 @@
         position: relative;
         overflow: hidden;
     }
-    
+
     .mood-option:hover {
         transform: translateY(-5px);
         box-shadow: 0 8px 25px rgba(0,0,0,0.2);
     }
-    
+
     .mood-option.selected {
         transform: translateY(-5px);
         box-shadow: 0 8px 25px rgba(0,0,0,0.3);
         border: 3px solid #007bff;
         animation: pulse 0.6s ease-in-out;
     }
-    
+
     @keyframes pulse {
         0% { transform: translateY(-5px) scale(1); }
         50% { transform: translateY(-5px) scale(1.05); }
         100% { transform: translateY(-5px) scale(1); }
     }
-    
+
     .mood-1 { 
         background: linear-gradient(135deg, #ff6b6b, #ee5a52); 
         color: white; 
@@ -64,30 +64,30 @@
         background: linear-gradient(135deg, #42a5f5, #2196f3); 
         color: white; 
     }
-    
+
     .mood-icon {
         font-size: 3em;
         margin-bottom: 10px;
         display: block;
         animation: bounce 2s infinite;
     }
-    
+
     @keyframes bounce {
         0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
         40% { transform: translateY(-10px); }
         60% { transform: translateY(-5px); }
     }
-    
+
     .mood-option.selected .mood-icon {
         animation: bounce 0.6s ease-in-out;
     }
-    
+
     .mood-history {
         max-height: 500px;
         overflow-y: auto;
         padding-right: 10px;
     }
-    
+
     .mood-entry {
         border-left: 5px solid;
         padding: 15px 20px;
@@ -98,11 +98,11 @@
         transition: transform 0.2s ease;
         position: relative;
     }
-    
+
     .mood-entry:hover {
         transform: translateX(5px);
     }
-    
+
     .mood-entry.mood-1 { 
         border-left-color: #ff6b6b;
         background: linear-gradient(90deg, rgba(255,107,107,0.1) 0%, white 10%);
@@ -123,7 +123,7 @@
         border-left-color: #42a5f5;
         background: linear-gradient(90deg, rgba(66,165,245,0.1) 0%, white 10%);
     }
-    
+
     .chart-container {
         position: relative;
         height: 300px;
@@ -133,14 +133,14 @@
         padding: 20px;
         box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
-    
+
     .mood-stats {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
         gap: 15px;
         margin: 20px 0;
     }
-    
+
     .stat-card {
         background: white;
         padding: 20px;
@@ -149,17 +149,17 @@
         box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         transition: transform 0.2s ease;
     }
-    
+
     .stat-card:hover {
         transform: translateY(-3px);
     }
-    
+
     .stat-number {
         font-size: 2em;
         font-weight: bold;
         color: #007bff;
     }
-    
+
     .submit-button {
         background: linear-gradient(45deg, #28a745, #20c997);
         border: none;
@@ -169,18 +169,18 @@
         border-radius: 25px;
         transition: all 0.3s ease;
     }
-    
+
     .submit-button:hover:not(:disabled) {
         background: linear-gradient(45deg, #20c997, #28a745);
         transform: translateY(-2px);
         box-shadow: 0 5px 15px rgba(40,167,69,0.4);
     }
-    
+
     .submit-button:disabled {
         background: #6c757d;
         cursor: not-allowed;
     }
-    
+
     .notes-textarea {
         resize: vertical;
         min-height: 100px;
@@ -190,36 +190,36 @@
         font-size: 1em;
         transition: border-color 0.3s ease;
     }
-    
+
     .notes-textarea:focus {
         border-color: #007bff;
         box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
     }
-    
+
     .mood-tips {
         background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
         border-radius: 15px;
         padding: 20px;
         margin-top: 20px;
     }
-    
+
     .tip-icon {
         color: #007bff;
         margin-right: 10px;
     }
-    
+
     .progress-ring {
         width: 80px;
         height: 80px;
         margin: 0 auto 15px;
     }
-    
+
     .progress-ring__circle {
         stroke: #007bff;
         stroke-linecap: round;
         transition: stroke-dashoffset 0.5s ease-in-out;
     }
-    
+
     @keyframes fadeOut {
         from {
             opacity: 1;
@@ -230,18 +230,18 @@
             transform: translateX(-20px);
         }
     }
-    
+
     @media (max-width: 768px) {
         .mood-selector {
             flex-direction: column;
             align-items: center;
         }
-        
+
         .mood-option {
             min-width: 200px;
             max-width: 250px;
         }
-        
+
         .mood-stats {
             grid-template-columns: repeat(2, 1fr);
         }
@@ -251,6 +251,9 @@
 
 {% block content %}
 <div class="container mt-4">
+    <form style="display: none;">
+        {% csrf_token %}
+    </form>
     <div class="row">
         <!-- Main Mood Tracker -->
         <div class="col-lg-8">
@@ -261,13 +264,13 @@
                     </h5>
                     <small>Track your emotional well-being to identify patterns and progress</small>
                 </div>
-                
+
                 <div class="card-body">
                     {# CRITICAL FIX: Hardcoding URL to bypass template processing issues #}
                     <form id="mood-form" method="post" data-post-url="/mood-tracker/"> 
-                        
+
                         {% csrf_token %}
-                        
+
                         <div class="text-center mb-4">
                             <h6 class="mb-3">
                                 <i class="fas fa-question-circle text-primary"></i> 
@@ -275,7 +278,7 @@
                             </h6>
                             <p class="text-muted">Select the mood that best represents how you feel today</p>
                         </div>
-                        
+
                         <div class="mood-selector">
                             <div class="mood-option mood-1" onclick="selectMood(1)" data-mood="1">
                                 <div class="mood-icon">😢</div>
@@ -303,9 +306,9 @@
                                 <small>Feeling great and energetic</small>
                             </div>
                         </div>
-                        
+
                         <input type="hidden" id="mood_level" name="mood_level" required>
-                        
+
                         <div class="mb-4">
                             <label for="notes" class="form-label">
                                 <i class="fas fa-sticky-note text-primary"></i> 
@@ -322,7 +325,7 @@
                                 <span id="char-count">0</span>/500 characters
                             </small>
                         </div>
-                        
+
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary submit-button" id="submit-mood" disabled>
                                 <i class="fas fa-save"></i> Save Mood Entry
@@ -337,7 +340,7 @@
                     </form>
                 </div>
             </div>
-            
+
             <!-- Mood Statistics -->
             {% if recent_moods %}
             <div class="card mt-4">
@@ -354,7 +357,7 @@
             </div>
             {% endif %}
         </div>
-        
+
         <!-- Sidebar -->
         <div class="col-lg-4">
             <!-- Recent Mood History -->
@@ -424,7 +427,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Mood Tracking Tips -->
             <div class="card mt-3">
                 <div class="card-body mood-tips">
@@ -454,7 +457,7 @@
                             Be honest about your feelings
                         </li>
                     </ul>
-                    
+
                     <div class="text-center mt-3">
                         <a href="{% url 'resources' %}" class="btn btn-sm btn-outline-primary">
                             <i class="fas fa-life-ring"></i> Find Resources

@@ -12,12 +12,12 @@ class MentalHealthChatbot {
         this.chatMessages = document.getElementById('chat-messages');
         this.sendButton = document.getElementById('send-button');
         this.typingIndicator = document.getElementById('typing-indicator');
-        
+
         // State management
         this.isProcessing = false;
         this.messageHistory = [];
         this.currentConversationId = null;
-        
+
         // Configuration
         this.config = {
             maxMessageLength: 500,
@@ -26,10 +26,10 @@ class MentalHealthChatbot {
             autoScrollOffset: 100,
             retryAttempts: 3
         };
-        
+
         this.init();
     }
-    
+
     /**
      * Initialize the chatbot
      */
@@ -39,14 +39,14 @@ class MentalHealthChatbot {
         this.focusInput();
         this.setupKeyboardShortcuts();
         this.initializeAutoResize();
-        
+
         // Set initial state
         this.updateSendButtonState();
         this.scrollToBottom();
-        
+
         console.log('Mental Health Chatbot initialized successfully');
     }
-    
+
     /**
      * Setup all event listeners
      */
@@ -58,7 +58,7 @@ class MentalHealthChatbot {
             this.messageInput.addEventListener('focus', () => this.handleInputFocus());
             this.messageInput.addEventListener('blur', () => this.handleInputBlur());
         }
-        
+
         if (this.sendButton) {
             // Ensure type="button" in HTML is used to prevent default form submission
             this.sendButton.addEventListener('click', (e) => {
@@ -66,16 +66,16 @@ class MentalHealthChatbot {
                 this.sendMessage();
             });
         }
-        
+
         window.addEventListener('beforeunload', () => this.handleBeforeUnload());
         window.addEventListener('online', () => this.handleOnline());
         window.addEventListener('offline', () => this.handleOffline());
-        
+
         if (this.chatMessages) {
             this.chatMessages.addEventListener('scroll', () => this.handleScroll());
         }
     }
-    
+
     /**
      * Handle keyboard input
      */
@@ -91,7 +91,7 @@ class MentalHealthChatbot {
             }
         }
     }
-    
+
     /**
      * Handle input field changes
      */
@@ -101,7 +101,7 @@ class MentalHealthChatbot {
         this.autoResizeTextarea();
         this.handleTypingIndicator(); // For future real-time typing indicators
     }
-    
+
     /**
      * Handle paste events
      */
@@ -111,21 +111,21 @@ class MentalHealthChatbot {
             this.updateCharacterCount();
         }, 0);
     }
-    
+
     /**
      * Handle input focus
      */
     handleInputFocus() {
         this.markConversationActive(); // For future active session tracking
     }
-    
+
     /**
      * Handle input blur
      */
     handleInputBlur() {
         this.clearTypingIndicator(); // Clear local typing indicator
     }
-    
+
     /**
      * Setup keyboard shortcuts
      */
@@ -135,24 +135,24 @@ class MentalHealthChatbot {
                 e.preventDefault();
                 this.sendMessage();
             }
-            
+
             if (e.key === 'Escape' && document.activeElement === this.messageInput) {
                 this.clearInput();
             }
-            
+
             if ((e.ctrlKey || e.metaKey) && e.key === '/') {
                 e.preventDefault();
                 this.focusInput();
             }
         });
     }
-    
+
     /**
      * Send message to the chatbot
      */
     async sendMessage() {
         const message = this.messageInput.value.trim();
-        
+
         // --- Validation ---
         if (this.isProcessing) {
             // If already processing, exit immediately to prevent queueing or double-sending
@@ -164,34 +164,34 @@ class MentalHealthChatbot {
             this.showTemporaryError('Please enter a message.');
             return;
         }
-        
+
         if (message.length > this.config.maxMessageLength) {
             this.showTemporaryError(`Message too long. Maximum ${this.config.maxMessageLength} characters.`);
             return;
         }
-        
+
         if (!navigator.onLine) {
             this.showTemporaryError('No internet connection. Please check your network.');
             return;
         }
         // --- End Validation ---
-        
+
         try {
             this.setProcessingState(true); // Disable input and button
-            
+
             this.addMessageToChat('You', message, 'user-message', new Date());
-            
+
             // Clear input after a small delay to allow `isProcessing` to prevent re-entry
             setTimeout(() => {
                 this.clearInput(); 
             }, this.config.clearInputDelay);
-            
+
             this.showTypingIndicator();
-            
+
             const response = await this.sendMessageWithRetry(message);
-            
+
             await this.handleBotResponse(response);
-            
+
         } catch (error) {
             console.error('Error sending message:', error);
             this.handleError(error);
@@ -200,7 +200,7 @@ class MentalHealthChatbot {
             this.hideTypingIndicator();
         }
     }
-    
+
     /**
      * Send message with retry logic
      */
@@ -218,15 +218,15 @@ class MentalHealthChatbot {
                     conversation_id: this.currentConversationId 
                 })
             });
-            
+
             if (!response.ok) {
                 const errorData = await response.json().catch(() => ({}));
                 throw new Error(`HTTP ${response.status}: ${errorData.error || response.statusText}`);
             }
-            
+
             const data = await response.json();
             return data;
-            
+
         } catch (error) {
             if (attempt < this.config.retryAttempts) {
                 console.warn(`Retry attempt ${attempt} failed for message: "${message}". Error: ${error.message}. Retrying...`);
@@ -236,7 +236,7 @@ class MentalHealthChatbot {
             throw error; // Re-throw after final attempt
         }
     }
-    
+
     /**
      * Handle bot response
      */
@@ -244,25 +244,25 @@ class MentalHealthChatbot {
         if (data.error) {
             throw new Error(data.error);
         }
-        
+
         if (data.bot_response) {
             await this.delay(this.config.typingDelay); // Add small delay for natural feel
-            
+
             const messageClass = data.is_crisis ? 'crisis-message' : 'bot-message';
             this.addMessageToChat('Support Bot', data.bot_response, messageClass, new Date());
-            
+
             if (data.is_crisis) {
                 this.handleCrisisResponse(data);
             }
-            
+
             if (data.sentiment !== undefined) {
                 this.handleSentimentFeedback(data.sentiment);
             }
-            
+
             if (data.conversation_id) {
                 this.currentConversationId = data.conversation_id;
             }
-            
+
             this.messageHistory.push({
                 user: data.user_message || '',
                 bot: data.bot_response,
@@ -270,11 +270,11 @@ class MentalHealthChatbot {
                 sentiment: data.sentiment,
                 is_crisis: data.is_crisis
             });
-            
+
             this.autoSaveConversation(); // Placeholder for saving state
         }
     }
-    
+
     /**
      * Handle crisis response
      */
@@ -287,7 +287,7 @@ class MentalHealthChatbot {
         this.addSystemMessage('⚠️ Crisis support resources have been provided. If this is an emergency, please call 911 immediately.');
         this.logCrisisEvent(data); // Log for backend monitoring
     }
-    
+
     /**
      * Handle sentiment feedback
      */
@@ -298,24 +298,24 @@ class MentalHealthChatbot {
             this.addSystemMessage('😊 It\'s wonderful to hear some positivity in your message!');
         }
     }
-    
+
     /**
      * Add message to chat interface
      */
     addMessageToChat(sender, content, className, timestamp) {
         if (!this.chatMessages) return;
-        
+
         const messageDiv = document.createElement('div');
         messageDiv.className = `message ${className}`;
         messageDiv.setAttribute('data-timestamp', timestamp.toISOString());
-        
+
         const timeString = timestamp.toLocaleTimeString([], {
             hour: '2-digit',
             minute: '2-digit'
         });
-        
+
         const icon = sender === 'You' ? 'fas fa-user' : 'fas fa-robot';
-        
+
         messageDiv.innerHTML = `
             <div class="message-content">
                 <div class="message-header">
@@ -325,20 +325,20 @@ class MentalHealthChatbot {
                 <div class="message-text">${this.formatMessageContent(content)}</div>
             </div>
         `;
-        
+
         this.chatMessages.appendChild(messageDiv);
         this.animateMessageIn(messageDiv);
         this.scrollToBottom();
         this.updateAriaLive(content); // For screen readers
     }
-    
+
     /**
      * Add system message
      */
     addSystemMessage(content) {
         this.addMessageToChat('System', content, 'system-message', new Date());
     }
-    
+
     /**
      * Format message content
      */
@@ -349,7 +349,7 @@ class MentalHealthChatbot {
         formatted = this.sanitizeHtml(formatted);        // Basic HTML sanitization
         return formatted;
     }
-    
+
     /**
      * Make URLs clickable
      */
@@ -357,7 +357,7 @@ class MentalHealthChatbot {
         const urlRegex = /(https?:\/\/[^\s]+)/g;
         return text.replace(urlRegex, '<a href="\$1" target="_blank" rel="noopener noreferrer">\$1</a>');
     }
-    
+
     /**
      * Make phone numbers clickable
      */
@@ -365,7 +365,7 @@ class MentalHealthChatbot {
         const phoneRegex = /(\b\d{3}[-.]?\d{3}[-.]?\d{4}\b)/g;
         return text.replace(phoneRegex, '<a href="tel:\$1">\$1</a>');
     }
-    
+
     /**
      * Basic HTML sanitization
      */
@@ -374,7 +374,7 @@ class MentalHealthChatbot {
         div.textContent = html; // Escapes HTML characters
         return div.innerHTML;
     }
-    
+
     /**
      * Animate message in
      */
@@ -387,7 +387,7 @@ class MentalHealthChatbot {
             messageElement.style.transform = 'translateY(0)';
         });
     }
-    
+
     /**
      * Show typing indicator
      */
@@ -397,7 +397,7 @@ class MentalHealthChatbot {
             this.scrollToBottom();
         }
     }
-    
+
     /**
      * Hide typing indicator
      */
@@ -406,7 +406,7 @@ class MentalHealthChatbot {
             this.typingIndicator.style.display = 'none';
         }
     }
-    
+
     /**
      * Show crisis modal
      */
@@ -414,7 +414,7 @@ class MentalHealthChatbot {
         const modal = document.getElementById('crisisModal');
         const resourcesDiv = document.getElementById('crisis-resources');
         if (!modal || !resourcesDiv) return;
-        
+
         let resourcesHtml = `
             <div class="alert alert-danger mb-4">
                 <div class="d-flex align-items-center">
@@ -460,7 +460,7 @@ class MentalHealthChatbot {
             }
         }, 500);
     }
-    
+
     /**
      * Set processing state (disable/enable input and button)
      */
@@ -479,7 +479,7 @@ class MentalHealthChatbot {
             this.focusInput();
         }
     }
-    
+
     /**
      * Update send button state based on input and processing status
      */
@@ -488,7 +488,7 @@ class MentalHealthChatbot {
         const hasMessage = this.messageInput.value.trim().length > 0;
         this.sendButton.disabled = !hasMessage || this.isProcessing;
     }
-    
+
     /**
      * Update character count display for message input
      */
@@ -507,7 +507,7 @@ class MentalHealthChatbot {
             }
         }
     }
-    
+
     /**
      * Auto-resize textarea based on content
      */
@@ -517,7 +517,7 @@ class MentalHealthChatbot {
             this.messageInput.style.height = Math.min(this.messageInput.scrollHeight, 120) + 'px';
         }
     }
-    
+
     /**
      * Initialize auto-resize when page loads
      */
@@ -526,7 +526,7 @@ class MentalHealthChatbot {
             this.autoResizeTextarea();
         }
     }
-    
+
     /**
      * Enforce maximum length on input
      */
@@ -536,7 +536,7 @@ class MentalHealthChatbot {
             this.showTemporaryError(`Message truncated to ${this.config.maxMessageLength} characters.`);
         }
     }
-    
+
     /**
      * Clear input field and related states
      */
@@ -548,7 +548,7 @@ class MentalHealthChatbot {
             this.updateCharacterCount();
         }
     }
-    
+
     /**
      * Focus input field unless currently processing
      */
@@ -557,7 +557,7 @@ class MentalHealthChatbot {
             this.messageInput.focus();
         }
     }
-    
+
     /**
      * Scroll to bottom of chat messages area
      */
@@ -566,14 +566,14 @@ class MentalHealthChatbot {
             this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
         }
     }
-    
+
     /**
      * Handle scroll events (placeholder for future features like lazy loading)
      */
     handleScroll() {
         // Implement features like loading more messages or "new message" indicator
     }
-    
+
     /**
      * Show temporary notification/error message on the side
      */
@@ -586,14 +586,14 @@ class MentalHealthChatbot {
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         `;
         document.body.appendChild(errorDiv);
-        
+
         setTimeout(() => {
             if (errorDiv.parentNode) {
                 errorDiv.remove();
             }
         }, duration);
     }
-    
+
     /**
      * Handle fetch and other errors gracefully
      */
@@ -610,7 +610,7 @@ class MentalHealthChatbot {
         }
         this.addMessageToChat('System', `❌ ${errorMessage}`, 'system-message error-message', new Date());
     }
-    
+
     /**
      * Handle network status changes
      */
@@ -620,28 +620,28 @@ class MentalHealthChatbot {
     handleOffline() {
         this.addSystemMessage('🔴 No internet connection. Messages will be sent when connection is restored.');
     }
-    
+
     /**
      * Handle page unload (e.g., save conversation state)
      */
     handleBeforeUnload() {
         this.saveConversationState(); 
     }
-    
+
     /**
      * Load chat history from backend/localStorage (placeholder)
      */
     loadChatHistory() {
         console.log('Loading chat history...');
     }
-    
+
     /**
      * Auto-save conversation state (placeholder)
      */
     autoSaveConversation() {
         // console.log('Auto-saving conversation...'); // Can be noisy
     }
-    
+
     /**
      * Save conversation state explicitly (placeholder)
      */
@@ -657,7 +657,7 @@ class MentalHealthChatbot {
             console.warn('Could not save conversation state to localStorage:', error);
         }
     }
-    
+
     /**
      * Utility: Create delay for better UX
      */
@@ -682,7 +682,7 @@ class MentalHealthChatbot {
         }
         return cookieValue;
     }
-    
+
     /**
      * Update ARIA live region for screen readers (accessibility)
      */
@@ -692,28 +692,28 @@ class MentalHealthChatbot {
             ariaLive.textContent = content;
         }
     }
-    
+
     /**
      * Handle typing indicator logic (for future real-time features)
      */
     handleTypingIndicator() {
         // Implement logic for showing/hiding typing indicators to other users/sessions
     }
-    
+
     /**
      * Clear typing indicator (if any, for single user)
      */
     clearTypingIndicator() {
         // Implement logic for clearing local typing indicators
     }
-    
+
     /**
      * Mark conversation as active (for backend tracking)
      */
     markConversationActive() {
         // Send a ping to backend to mark conversation as active/last used
     }
-    
+
     /**
      * Log crisis event for backend monitoring
      */
@@ -740,15 +740,15 @@ const ChatUtils = {
         const messages = document.querySelectorAll('.message');
         let chatText = 'Mental Health Chat Export\n';
         chatText += '='.repeat(50) + '\n\n';
-        
+
         messages.forEach(message => {
             const sender = message.querySelector('strong').textContent;
             const content = message.querySelector('.message-text').textContent;
             const time = message.querySelector('.message-time').textContent;
-            
+
             chatText += `[${time}] ${sender}\n${content}\n\n`;
         });
-        
+
         const blob = new Blob([chatText], { type: 'text/plain' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
@@ -761,6 +761,13 @@ const ChatUtils = {
     },
     printChat() {
         window.print();
+    }
+};
+
+// Handle key press for Enter key
+window.handleKeyPress = function(event) {
+    if (event.key === 'Enter') {
+        sendMessage();
     }
 };
 
@@ -784,7 +791,7 @@ document.addEventListener('DOMContentLoaded', function() {
         chatbotInstance = new MentalHealthChatbot();
         console.log('Mental Health Chatbot loaded successfully');
     }
-    
+
     // Add ARIA live region for screen readers (hidden but read aloud)
     if (!document.getElementById('aria-live-region')) {
         const ariaDiv = document.createElement('div');
@@ -794,7 +801,7 @@ document.addEventListener('DOMContentLoaded', function() {
         ariaDiv.setAttribute('aria-atomic', 'true'); 
         document.body.appendChild(ariaDiv);
     }
-    
+
     // Add keyboard navigation hints for accessibility (screen reader only)
     const helpText = document.createElement('div');
     helpText.className = 'sr-only';

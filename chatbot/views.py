@@ -131,6 +131,7 @@ def process_message(request):
         logger.error(f"Unhandled error in process_message: {e}", exc_info=True) # exc_info=True to log full traceback
         return JsonResponse({'error': 'Internal server error processing message.'}, status=500)
 
+@login_required
 def mood_tracker(request):
     """Mood tracking interface"""
     # Ensure a session_id exists for the current user/session for consistent tracking
@@ -197,6 +198,7 @@ def mood_tracker(request):
         'recent_moods': recent_moods
     })
 
+@login_required
 def resources(request):
     """Mental health resources page"""
     emergency_resources = SupportResource.objects.filter(is_emergency=True)
@@ -250,7 +252,7 @@ def login_view(request):
             if user is not None:
                 login(request, user)
                 messages.success(request, f'Welcome back, {username}!')
-                return redirect('mood_tracker')
+                return redirect('chat')
         else:
             messages.error(request, 'Invalid username or password.')
     else:

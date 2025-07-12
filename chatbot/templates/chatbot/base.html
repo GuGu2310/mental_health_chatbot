@@ -44,7 +44,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
                                 <i class="fas fa-user"></i> {{ user.username }}
                             </a>
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu dropdown-menu-end" style="z-index: 1050;" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="{% url 'mood_tracker' %}">
                                     <i class="fas fa-heart"></i> My Mood Tracker
                                 </a></li>
