@@ -1,0 +1,278 @@
+{% extends 'chatbot/base.html' %}
+
+{% block title %}Mental Health Resources{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0">
+                        <i class="fas fa-life-ring"></i> Mental Health Resources
+                    </h4>
+                    <p class="mb-0">Professional help and support resources</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Emergency Resources -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="alert alert-danger">
+                <h5><i class="fas fa-exclamation-triangle"></i> Crisis & Emergency Resources</h5>
+                <p class="mb-2">If you're having thoughts of self-harm or suicide, please reach out immediately:</p>
+                <div class="row">
+                    <div class="col-md-4">
+                        <strong>National Suicide Prevention Lifeline</strong><br>
+                        <a href="tel:988" class="btn btn-danger btn-sm mt-1">
+                            <i class="fas fa-phone"></i> Call 988
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <strong>Crisis Text Line</strong><br>
+                        <a href="sms:741741" class="btn btn-warning btn-sm mt-1">
+                            <i class="fas fa-sms"></i> Text HOME to 741741
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <strong>Emergency Services</strong><br>
+                        <a href="tel:911" class="btn btn-danger btn-sm mt-1">
+                            <i class="fas fa-ambulance"></i> Call 911
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Emergency Resources from Database -->
+    {% if emergency_resources %}
+    <div class="row">
+        {% for resource in emergency_resources %}
+        <div class="col-md-6 mb-3">
+            <div class="card border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h6 class="mb-0">
+                        <i class="fas fa-exclamation-circle"></i> {{ resource.title }}
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ resource.description }}</p>
+                    {% if resource.phone_number %}
+                    <p>
+                        <strong>Phone:</strong> 
+                        <a href="tel:{{ resource.phone_number }}" class="btn btn-danger btn-sm">
+                            <i class="fas fa-phone"></i> {{ resource.phone_number }}
+                        </a>
+                    </p>
+                    {% endif %}
+                    {% if resource.url %}
+                    <p>
+                        <strong>Website:</strong> 
+                        <a href="{{ resource.url }}" target="_blank" class="btn btn-outline-danger btn-sm">
+                            <i class="fas fa-external-link-alt"></i> Visit Website
+                        </a>
+                    </p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    
+    <!-- General Resources -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <h4><i class="fas fa-heart"></i> Support & Treatment Resources</h4>
+        </div>
+    </div>
+    
+    <div class="row">
+        <!-- Mental Health Organizations -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-primary text-white">
+                    <h6><i class="fas fa-building"></i> Mental Health Organizations</h6>
+                </div>
+                <div class="card-body">
+                    <div class="resource-item mb-3">
+                        <strong>National Alliance on Mental Illness (NAMI)</strong>
+                        <p class="small">Support, education and advocacy for mental health</p>
+                        <a href="https://www.nami.org" target="_blank" class="btn btn-sm btn-outline-primary">
+                            Visit NAMI
+                        </a>
+                    </div>
+                    
+                    <div class="resource-item mb-3">
+                        <strong>Mental Health America</strong>
+                        <p class="small">Mental health screening and resources</p>
+                        <a href="https://www.mhanational.org" target="_blank" class="btn btn-sm btn-outline-primary">
+                            Visit MHA
+                        </a>
+                    </div>
+                    
+                    <div class="resource-item">
+                        <strong>American Psychological Association</strong>
+                        <p class="small">Find a psychologist and mental health information</p>
+                        <a href="https://www.apa.org" target="_blank" class="btn btn-sm btn-outline-primary">
+                            Visit APA
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Support Groups & Communities -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-info text-white">
+                    <h6><i class="fas fa-users"></i> Support Groups & Communities</h6>
+                </div>
+                <div class="card-body">
+                    <div class="resource-item mb-3">
+                        <strong>7 Cups</strong>
+                        <p class="small">Free emotional support and online therapy</p>
+                        <a href="https://www.7cups.com" target="_blank" class="btn btn-sm btn-outline-info">
+                            Visit 7 Cups
+                        </a>
+                    </div>
+                    
+                    <div class="resource-item mb-3">
+                        <strong>Support Groups Central</strong>
+                        <p class="small">Find local and online support groups</p>
+                        <a href="https://www.supportgroupscentral.com" target="_blank" class="btn btn-sm btn-outline-info">
+                            Find Groups
+                        </a>
+                    </div>
+                    
+                    <div class="resource-item">
+                        <strong>Reddit Mental Health Communities</strong>
+                        <p class="small">Peer support communities (r/mentalhealth, r/depression)</p>
+                        <a href="https://www.reddit.com/r/mentalhealth" target="_blank" class="btn btn-sm btn-outline-info">
+                            Visit Reddit
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Therapy & Professional Help -->
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-success text-white">
+                    <h6><i class="fas fa-user-md"></i> Find Professional Help</h6>
+                </div>
+                <div class="card-body">
+                    <div class="resource-item mb-3">
+                        <strong>Psychology Today</strong>
+                        <p class="small">Find therapists, psychiatrists, and treatment centers</p>
+                        <a href="https://www.psychologytoday.com" target="_blank" class="btn btn-sm btn-outline-success">
+                            Find Therapist
+                        </a>
+                    </div>
+                    
+                    <div class="resource-item mb-3">
+                        <strong>BetterHelp</strong>
+                        <p class="small">Online therapy and counseling services</p>
+                        <a href="https://www.betterhelp.com" target="_blank" class="btn btn-sm btn-outline-success">
+                            Try BetterHelp
+                        </a>
+                    </div>
+                    
+                    <div class="resource-item">
+                        <strong>SAMHSA Treatment Locator</strong>
+                        <p class="small">Find treatment facilities and programs</p>
+                        <a href="https://findtreatment.samhsa.gov" target="_blank" class="btn btn-sm btn-outline-success">
+                            Find Treatment
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Self-Help Resources -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-warning text-dark">
+                    <h6><i class="fas fa-book"></i> Self-Help & Education</h6>
+                </div>
+                <div class="card-body">
+                    <div class="resource-item mb-3">
+                        <strong>MindTools</strong>
+                        <p class="small">Stress management and mental wellness techniques</p>
+                        <a href="https://www.mindtools.com" target="_blank" class="btn btn-sm btn-outline-warning">
+                            Visit MindTools
+                        </a>
+                    </div>
+                    
+                    <div class="resource-item mb-3">
+                        <strong>Headspace</strong>
+                        <p class="small">Meditation and mindfulness app</p>
+                        <a href="https://www.headspace.com" target="_blank" class="btn btn-sm btn-outline-warning">
+                            Try Headspace
+                        </a>
+                    </div>
+                    
+                    <div class="resource-item">
+                        <strong>Centre for Clinical Interventions</strong>
+                        <p class="small">Free self-help modules and worksheets</p>
+                        <a href="https://www.cci.health.wa.gov.au" target="_blank" class="btn btn-sm btn-outline-warning">
+                            Get Resources
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Database Resources -->
+    {% if general_resources %}
+    <div class="row mt-4">
+        <div class="col-12">
+            <h4><i class="fas fa-database"></i> Additional Resources</h4>
+        </div>
+    </div>
+    
+    <div class="row">
+        {% for resource in general_resources %}
+        <div class="col-md-6 mb-3">
+            <div class="card">
+                <div class="card-header">
+                    <h6 class="mb-0">{{ resource.title }}</h6>
+                    <small class="text-muted">{{ resource.category|title }}</small>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ resource.description }}</p>
+                    {% if resource.phone_number %}
+                    <p>
+                        <strong>Phone:</strong> 
+                        <a href="tel:{{ resource.phone_number }}">{{ resource.phone_number }}</a>
+                    </p>
+                    {% endif %}
+                    {% if resource.url %}
+                    <a href="{{ resource.url }}" target="_blank" class="btn btn-primary btn-sm">
+                        <i class="fas fa-external-link-alt"></i> Visit Website
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    
+    <!-- Back to Chat -->
+    <div class="row mt-4">
+        <div class="col-12 text-center">
+            <a href="{% url 'chat' %}" class="btn btn-primary btn-lg">
+                <i class="fas fa-comments"></i> Back to Chat
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

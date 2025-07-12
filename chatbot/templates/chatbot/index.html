@@ -1,0 +1,57 @@
+{% extends 'chatbot/base.html' %}
+
+{% block title %}Welcome - Mental Health Support Chatbot{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card text-center">
+                <div class="card-body p-5">
+                    <div class="mb-4">
+                        <i class="fas fa-brain fa-4x text-primary mb-3"></i>
+                        <h1 class="display-4 fw-bold text-primary">Mental Health Support</h1>
+                        <p class="lead text-muted">A safe, confidential space for mental health support and guidance</p>
+                    </div>
+                    
+                    <div class="row mb-4">
+                        <div class="col-md-4 mb-3">
+                            <i class="fas fa-shield-alt fa-2x text-success mb-2"></i>
+                            <h5>Confidential</h5>
+                            <p class="text-muted">Your conversations are private and secure</p>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <i class="fas fa-clock fa-2x text-info mb-2"></i>
+                            <h5>24/7 Available</h5>
+                            <p class="text-muted">Get support whenever you need it</p>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <i class="fas fa-heart fa-2x text-danger mb-2"></i>
+                            <h5>Compassionate</h5>
+                            <p class="text-muted">Non-judgmental and empathetic responses</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid gap-3 d-md-block">
+                        <a href="{% url 'chat' %}" class="btn btn-primary btn-lg">
+                            <i class="fas fa-comments"></i> Start Chatting
+                        </a>
+                        <a href="{% url 'mood_tracker' %}" class="btn btn-outline-primary btn-lg">
+                            <i class="fas fa-heart"></i> Track Mood
+                        </a>
+                        <a href="{% url 'resources' %}" class="btn btn-outline-secondary btn-lg">
+                            <i class="fas fa-life-ring"></i> Get Resources
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="alert alert-warning mt-4" role="alert">
+                <i class="fas fa-exclamation-triangle"></i>
+                <strong>Important:</strong> This chatbot provides support but is not a replacement for professional mental health care. 
+                If you're experiencing a mental health emergency, please call <strong>988</strong> or <strong>911</strong> immediately.
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'chatbot/base.html' %}
+
+{% block title %}Server Error{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <div class="card">
+                <div class="card-body p-5">
+                    <i class="fas fa-exclamation-triangle fa-4x text-warning mb-4"></i>
+                    <h1 class="display-4">500</h1>
+                    <h4 class="mb-3">Server Error</h4>
+                    <p class="text-muted mb-4">
+                        Something went wrong on our end. Please try again later.
+                    </p>
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle"></i>
+                        If you need immediate mental health support, please call <strong>988</strong>
+                    </div>
+                    <div class="d-grid gap-2 d-md-block">
+                        <a href="{% url 'index' %}" class="btn btn-primary">
+                            <i class="fas fa-home"></i> Go Home
+                        </a>
+                        <a href="{% url 'resources' %}" class="btn btn-outline-primary">
+                            <i class="fas fa-life-ring"></i> Get Resources
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
