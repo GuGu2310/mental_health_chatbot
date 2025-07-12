@@ -179,15 +179,11 @@ class MoodTracker {
             // Log the URL just before fetch
             console.log('Fetching mood data to URL:', this.postUrl); 
 
-            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]')?.value || 
-                         document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') ||
-                         this.getCookie('csrftoken');
-
             const response = await fetch(this.postUrl, { 
                 method: 'POST',
                 body: formData,
                 headers: {
-                    'X-CSRFToken': csrfToken
+                    'X-CSRFToken': this.getCookie('csrftoken')
                 }
             });
 
@@ -443,6 +439,30 @@ class MoodTracker {
         }
         return cookieValue;
     }
+
+    // Get CSRF token from meta tag or cookie
+    getCSRFToken() {
+        const token = document.querySelector('[name=csrfmiddlewaretoken]');
+        if (token) {
+            return token.value;
+        }
+        // Fallback to cookie
+        const cookies = document.cookie.split(';');
+        for (let cookie of cookies) {
+            const [name, value] = cookie.trim().split('=');
+            if (name === 'csrftoken') {
+                return value;
+            }
+        }
+        return null;
+    }
+
+    async handleKeyPress(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            await this.handleFormSubmit(event);
+        }
+    }
 }
 
 // Global function to delete mood entry
@@ -531,3 +551,14 @@ document.addEventListener('DOMContentLoaded', function() {
         moodTrackerInstance = new MoodTracker();
     }
 });
+
+// Add handleKeyPress function
+// Global function for handling key press events
+function handleKeyPress(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        if (moodTrackerInstance) {
+            moodTrackerInstance.handleFormSubmit(event);
+        }
+    }
+}

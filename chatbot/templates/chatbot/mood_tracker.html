@@ -250,10 +250,8 @@
 {% endblock %}
 
 {% block content %}
+{% csrf_token %}
 <div class="container mt-4">
-    <form style="display: none;">
-        {% csrf_token %}
-    </form>
     <div class="row">
         <!-- Main Mood Tracker -->
         <div class="col-lg-8">

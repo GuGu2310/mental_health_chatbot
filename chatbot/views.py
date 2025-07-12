@@ -38,10 +38,10 @@ def chat_view(request):
                 user=request.user if request.user.is_authenticated else None
             )
             request.session['conversation_id'] = str(conversation.session_id)
-    
+
     # Get conversation history
     messages = Message.objects.filter(conversation=conversation).order_by('timestamp')
-    
+
     return render(request, 'chatbot/chat.html', {
         'messages': messages,
         'conversation_id': conversation.session_id
@@ -54,10 +54,10 @@ def process_message(request):
     try:
         data = json.loads(request.body)
         user_message = data.get('message', '').strip()
-        
+
         if not user_message:
             return JsonResponse({'error': 'No message provided'}, status=400)
-        
+
         # Get or create conversation based on session_id
         session_id = request.session.get('conversation_id')
         if not session_id:
@@ -74,22 +74,22 @@ def process_message(request):
                     user=request.user if request.user.is_authenticated else None
                 )
                 request.session['conversation_id'] = str(conversation.session_id)
-        
+
         # Save user message
         user_msg = Message.objects.create(
             conversation=conversation,
             message_type='user',
             content=user_message
         )
-        
+
         # Generate bot response
         chatbot = MentalHealthChatbot()
-        
+
         # Get conversation history for context (last 10 messages)
         recent_messages = Message.objects.filter(
             conversation=conversation
         ).order_by('-timestamp')[:10]
-        
+
         conversation_history = []
         for msg in reversed(recent_messages):
             messages_for_history = {
@@ -97,9 +97,9 @@ def process_message(request):
                 'content': msg.content
             }
             conversation_history.append(messages_for_history)
-        
+
         response = chatbot.generate_response(user_message, conversation_history)
-        
+
         # Save bot response
         bot_msg = Message.objects.create(
             conversation=conversation,
@@ -107,14 +107,14 @@ def process_message(request):
             content=response['message'],
             sentiment_score=response.get('sentiment')
         )
-        
+
         # Get support resources if crisis detected
         support_resources = []
         if response.get('is_crisis'):
             support_resources = list(SupportResource.objects.filter(
                 is_emergency=True
             ).values('title', 'description', 'phone_number', 'url'))
-        
+
         return JsonResponse({
             'bot_response': response['message'],
             'is_crisis': response.get('is_crisis', False),
@@ -123,7 +123,7 @@ def process_message(request):
             'timestamp': bot_msg.timestamp.isoformat(),
             'message_id': bot_msg.id
         })
-    
+
     except json.JSONDecodeError:
         logger.error(f"JSON Decode Error in process_message. Request Body: {request.body.decode('utf-8')}")
         return JsonResponse({'error': 'Invalid JSON format in request.'}, status=400)
@@ -131,7 +131,6 @@ def process_message(request):
         logger.error(f"Unhandled error in process_message: {e}", exc_info=True) # exc_info=True to log full traceback
         return JsonResponse({'error': 'Internal server error processing message.'}, status=500)
 
-@login_required
 def mood_tracker(request):
     """Mood tracking interface"""
     # Ensure a session_id exists for the current user/session for consistent tracking
@@ -141,7 +140,7 @@ def mood_tracker(request):
         new_session_uuid = uuid.uuid4()
         request.session['conversation_id'] = str(new_session_uuid)
         current_session_id_str = str(new_session_uuid)
-    
+
     # Convert session_id string to UUID object for database queries
     current_session_uuid_obj = uuid.UUID(current_session_id_str)
 
@@ -149,10 +148,10 @@ def mood_tracker(request):
         try:
             mood_level = int(request.POST.get('mood_level'))
             notes = request.POST.get('notes', '')
-            
+
             if mood_level not in [1, 2, 3, 4, 5]:
                 return JsonResponse({'error': 'Invalid mood level'}, status=400)
-            
+
             # Try to link to an existing Conversation if one exists for this session
             conversation_obj = None
             if current_session_id_str:
@@ -168,7 +167,7 @@ def mood_tracker(request):
                 mood_level=mood_level,
                 notes=notes
             )
-            
+
             # Important: After a successful POST, we usually redirect or return data.
             # Returning JSON here is correct for AJAX.
             return JsonResponse({'status': 'success', 'message': 'Mood recorded successfully!'})
@@ -178,7 +177,7 @@ def mood_tracker(request):
         except Exception as e:
             logger.error(f"Unhandled error saving mood entry: {e}", exc_info=True) # Log full traceback
             return JsonResponse({'error': 'Internal server error when saving mood.'}, status=500)
-    
+
     # --- GET recent mood entries for display ---
     recent_moods = []
     if request.user.is_authenticated:
@@ -193,17 +192,16 @@ def mood_tracker(request):
             session_id=current_session_uuid_obj,
             user__isnull=True 
         ).order_by('-created_at')[:10] # Get latest 10 entries
-    
+
     return render(request, 'chatbot/mood_tracker.html', {
         'recent_moods': recent_moods
     })
 
-@login_required
 def resources(request):
     """Mental health resources page"""
     emergency_resources = SupportResource.objects.filter(is_emergency=True)
     general_resources = SupportResource.objects.filter(is_emergency=False)
-    
+
     return render(request, 'chatbot/resources.html', {
         'emergency_resources': emergency_resources,
         'general_resources': general_resources
@@ -221,11 +219,11 @@ def clear_chat(request):
             conversation.save()
         except Conversation.DoesNotExist:
             pass # No active conversation for this session_id, nothing to mark inactive
-        
+
         # Remove the conversation_id from the session to start fresh
         if 'conversation_id' in request.session:
             del request.session['conversation_id']
-    
+
     return redirect('chat')
 
 def register(request):
@@ -280,9 +278,9 @@ def delete_account(request):
 def delete_mood_entry(request, mood_id):
     """Delete a specific mood entry"""
     mood_entry = get_object_or_404(MoodEntry, id=mood_id, user=request.user)
-    
+
     if request.method == 'POST':
         mood_entry.delete()
         return JsonResponse({'status': 'success', 'message': 'Mood entry deleted successfully!'})
-    
+
     return JsonResponse({'error': 'Invalid request method'}, status=405)
