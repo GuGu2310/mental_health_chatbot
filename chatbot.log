@@ -1,0 +1,1941 @@
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 3464
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 3165
+"GET /chat/ HTTP/1.1" 200 6206
+"GET /chat/ HTTP/1.1" 200 6206
+"GET /chat/ HTTP/1.1" 200 6206
+"GET /chat/ HTTP/1.1" 200 6206
+"GET /chat/ HTTP/1.1" 200 6206
+"GET / HTTP/1.1" 200 3464
+Internal Server Error: /mood-tracker/
+Traceback (most recent call last):
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\mental_health_chatbot\chatbot\views.py", line 166, in mood_tracker
+    return render(request, 'chatbot/mood_tracker.html', {
+        'recent_moods': recent_moods
+    })
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    self.unclosed_block_tag(parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 581, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 513: 'block'. Looking for one of: endblock.
+"GET /mood-tracker/ HTTP/1.1" 500 177268
+"GET /chat/ HTTP/1.1" 200 6206
+"GET /chat/ HTTP/1.1" 200 6206
+"GET /chat/ HTTP/1.1" 200 6206
+"GET /chat/ HTTP/1.1" 200 6206
+"GET /chat/ HTTP/1.1" 200 6206
+"GET /chat/ HTTP/1.1" 200 6206
+"GET /chat/ HTTP/1.1" 200 6206
+"GET /chat/ HTTP/1.1" 200 6206
+"GET /chat/ HTTP/1.1" 200 6206
+"GET /chat/ HTTP/1.1" 200 6206
+"GET /chat/ HTTP/1.1" 200 6206
+"GET / HTTP/1.1" 200 3464
+"GET / HTTP/1.1" 200 3464
+"GET /chat/ HTTP/1.1" 200 6206
+"GET / HTTP/1.1" 200 3464
+"GET /chat/ HTTP/1.1" 200 6206
+Internal Server Error: /mood-tracker/
+Traceback (most recent call last):
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\mental_health_chatbot\chatbot\views.py", line 166, in mood_tracker
+    return render(request, 'chatbot/mood_tracker.html', {
+        'recent_moods': recent_moods
+    })
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    self.unclosed_block_tag(parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 581, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 513: 'block'. Looking for one of: endblock.
+"GET /mood-tracker/ HTTP/1.1" 500 177273
+Watching for file changes with StatReloader
+Session data corrupted
+"GET /chat/ HTTP/1.1" 200 6206
+"GET /chat/ HTTP/1.1" 200 6206
+"GET /chat/ HTTP/1.1" 200 6206
+"GET /chat/ HTTP/1.1" 200 6206
+"GET /chat/ HTTP/1.1" 200 6206
+"GET /chat/ HTTP/1.1" 200 6206
+"GET /chat/ HTTP/1.1" 200 6206
+"GET /chat/ HTTP/1.1" 200 6206
+"GET / HTTP/1.1" 200 3464
+Internal Server Error: /mood-tracker/
+Traceback (most recent call last):
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\mental_health_chatbot\chatbot\views.py", line 166, in mood_tracker
+    return render(request, 'chatbot/mood_tracker.html', {
+        'recent_moods': recent_moods
+    })
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    self.unclosed_block_tag(parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 581, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 513: 'block'. Looking for one of: endblock.
+"GET /mood-tracker/ HTTP/1.1" 500 176589
+"GET /chat/ HTTP/1.1" 200 6206
+"GET /chat/ HTTP/1.1" 200 6206
+"GET /chat/ HTTP/1.1" 200 6206
+"GET /chat/ HTTP/1.1" 200 6206
+"GET /chat/ HTTP/1.1" 200 6206
+"GET /chat/ HTTP/1.1" 200 6206
+"GET /chat/ HTTP/1.1" 200 6206
+"GET /chat/ HTTP/1.1" 200 6206
+"GET /chat/ HTTP/1.1" 200 6206
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+"GET /chat/ HTTP/1.1" 200 6206
+"GET /chat/ HTTP/1.1" 200 6206
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+"GET /chat/ HTTP/1.1" 200 6206
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 3464
+"GET /chat/ HTTP/1.1" 200 6206
+Internal Server Error: /mood-tracker/
+Traceback (most recent call last):
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\mental_health_chatbot\chatbot\views.py", line 166, in mood_tracker
+    return render(request, 'chatbot/mood_tracker.html', {
+        'recent_moods': recent_moods
+    })
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    self.unclosed_block_tag(parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 581, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 513: 'block'. Looking for one of: endblock.
+"GET /mood-tracker/ HTTP/1.1" 500 176405
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+"GET /chat/ HTTP/1.1" 200 6206
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+"GET /chat/ HTTP/1.1" 200 6206
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+Internal Server Error: /mood-tracker/
+Traceback (most recent call last):
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\mental_health_chatbot\chatbot\views.py", line 166, in mood_tracker
+    return render(request, 'chatbot/mood_tracker.html', {
+        'recent_moods': recent_moods
+    })
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    self.unclosed_block_tag(parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 581, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 513: 'block'. Looking for one of: endblock.
+"GET /mood-tracker/ HTTP/1.1" 500 176405
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 5394
+"GET /static/chatbot/css/style.css HTTP/1.1" 200 4127
+"GET /chat/ HTTP/1.1" 200 16549
+"GET /static/chatbot/js/chat.js HTTP/1.1" 200 26297
+"POST /process-message/ HTTP/1.1" 200 218
+"POST /process-message/ HTTP/1.1" 200 233
+"GET /clear-chat/ HTTP/1.1" 302 0
+"GET /chat/ HTTP/1.1" 200 16549
+"POST /process-message/ HTTP/1.1" 200 296
+"POST /process-message/ HTTP/1.1" 200 236
+"GET /resources/ HTTP/1.1" 200 20854
+Internal Server Error: /mood-tracker/
+Traceback (most recent call last):
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\mental_health_chatbot\chatbot\views.py", line 166, in mood_tracker
+    return render(request, 'chatbot/mood_tracker.html', {
+        'recent_moods': recent_moods
+    })
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    self.unclosed_block_tag(parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 581, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 513: 'block'. Looking for one of: endblock.
+"GET /mood-tracker/ HTTP/1.1" 500 176410
+"GET /chat/ HTTP/1.1" 200 18677
+"GET / HTTP/1.1" 200 5394
+"GET /chat/ HTTP/1.1" 200 18677
+"GET /static/chatbot/css/style.css HTTP/1.1" 304 0
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+"POST /process-message/ HTTP/1.1" 200 243
+"POST /process-message/ HTTP/1.1" 200 219
+"POST /process-message/ HTTP/1.1" 200 270
+"GET /clear-chat/ HTTP/1.1" 302 0
+"GET /chat/ HTTP/1.1" 200 16549
+"GET /static/chatbot/js/chat.js HTTP/1.1" 304 0
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+"POST /process-message/ HTTP/1.1" 200 209
+Internal Server Error: /mood-tracker/
+Traceback (most recent call last):
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\mental_health_chatbot\chatbot\views.py", line 166, in mood_tracker
+    return render(request, 'chatbot/mood_tracker.html', {
+        'recent_moods': recent_moods
+    })
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    self.unclosed_block_tag(parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 581, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 513: 'block'. Looking for one of: endblock.
+"GET /mood-tracker/ HTTP/1.1" 500 176405
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+"GET /chat/ HTTP/1.1" 200 17211
+"GET /static/chatbot/css/style.css HTTP/1.1" 304 0
+"GET /static/chatbot/js/chat.js HTTP/1.1" 304 0
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+"GET /chat/ HTTP/1.1" 200 16549
+"GET /static/chatbot/js/chat.js HTTP/1.1" 200 26297
+"GET /static/chatbot/css/style.css HTTP/1.1" 200 4127
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 3165
+"POST /process-message/ HTTP/1.1" 200 223
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 3165
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 3165
+"POST /process-message/ HTTP/1.1" 200 215
+"POST /process-message/ HTTP/1.1" 200 242
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 3165
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 5394
+"GET /static/chatbot/css/style.css HTTP/1.1" 200 4127
+"GET /chat/ HTTP/1.1" 200 17211
+"GET /static/chatbot/js/chat.js HTTP/1.1" 200 26646
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+"GET /clear-chat/ HTTP/1.1" 302 0
+"GET /chat/ HTTP/1.1" 200 16549
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+"GET /chat/ HTTP/1.1" 200 16549
+"GET /static/chatbot/js/chat.js HTTP/1.1" 304 0
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+"GET /chat/ HTTP/1.1" 200 16549
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+"POST /process-message/ HTTP/1.1" 200 231
+"POST /process-message/ HTTP/1.1" 200 215
+"GET /chat/ HTTP/1.1" 200 18599
+"GET /static/chatbot/js/chat.js HTTP/1.1" 304 0
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+"POST /process-message/ HTTP/1.1" 200 231
+"GET /chat/ HTTP/1.1" 200 19986
+"GET /static/chatbot/css/style.css HTTP/1.1" 304 0
+"GET /static/chatbot/js/chat.js HTTP/1.1" 304 0
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+"POST /process-message/ HTTP/1.1" 200 223
+"GET /clear-chat/ HTTP/1.1" 302 0
+"GET /chat/ HTTP/1.1" 200 16563
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+"POST /process-message/ HTTP/1.1" 200 231
+"GET /chat/ HTTP/1.1" 200 17243
+"GET /static/chatbot/js/chat.js HTTP/1.1" 200 26646
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+"GET /chat/ HTTP/1.1" 200 17243
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+"POST /process-message/ HTTP/1.1" 200 231
+"POST /process-message/ HTTP/1.1" 200 223
+"GET /chat/ HTTP/1.1" 200 19952
+"GET /static/chatbot/js/chat.js HTTP/1.1" 304 0
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+"POST /process-message/ HTTP/1.1" 200 231
+"GET / HTTP/1.1" 200 5394
+"GET /static/chatbot/css/style.css HTTP/1.1" 304 0
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+"GET /resources/ HTTP/1.1" 200 20854
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+Internal Server Error: /mood-tracker/
+Traceback (most recent call last):
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\mental_health_chatbot\chatbot\views.py", line 166, in mood_tracker
+    return render(request, 'chatbot/mood_tracker.html', {
+        'recent_moods': recent_moods
+    })
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    self.unclosed_block_tag(parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 581, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 513: 'block'. Looking for one of: endblock.
+"GET /mood-tracker/ HTTP/1.1" 500 176410
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+"POST /process-message/ HTTP/1.1" 200 219
+"POST /process-message/ HTTP/1.1" 200 276
+"POST /process-message/ HTTP/1.1" 200 213
+"POST /process-message/ HTTP/1.1" 200 262
+"POST /process-message/ HTTP/1.1" 200 270
+"POST /process-message/ HTTP/1.1" 200 1501
+"POST /process-message/ HTTP/1.1" 200 213
+"POST /process-message/ HTTP/1.1" 200 1501
+"POST /process-message/ HTTP/1.1" 200 209
+"POST /process-message/ HTTP/1.1" 200 260
+"GET /chat/ HTTP/1.1" 200 36094
+"GET /static/chatbot/css/style.css HTTP/1.1" 304 0
+"GET /static/chatbot/js/chat.js HTTP/1.1" 304 0
+"GET /clear-chat/ HTTP/1.1" 302 0
+"GET /chat/ HTTP/1.1" 200 16563
+"GET /chat/ HTTP/1.1" 200 16563
+"POST /process-message/ HTTP/1.1" 200 283
+"POST /process-message/ HTTP/1.1" 200 213
+"GET /clear-chat/ HTTP/1.1" 302 0
+"GET /chat/ HTTP/1.1" 200 16563
+"GET /static/chatbot/js/chat.js HTTP/1.1" 200 27493
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 5394
+"GET /chat/ HTTP/1.1" 200 11840
+"GET /static/chatbot/js/chat.js HTTP/1.1" 304 0
+"POST /process-message/ HTTP/1.1" 200 215
+"POST /process-message/ HTTP/1.1" 200 237
+"POST /process-message/ HTTP/1.1" 200 230
+"POST /process-message/ HTTP/1.1" 200 220
+"GET /clear-chat/ HTTP/1.1" 302 0
+"GET /chat/ HTTP/1.1" 200 11840
+"GET /static/chatbot/js/chat.js HTTP/1.1" 304 0
+"GET /static/chatbot/css/style.css HTTP/1.1" 304 0
+"GET /chat/ HTTP/1.1" 200 11890
+"GET /static/chatbot/js/chat.js HTTP/1.1" 304 0
+"POST /process-message/ HTTP/1.1" 200 219
+"POST /process-message/ HTTP/1.1" 200 298
+"POST /process-message/ HTTP/1.1" 200 215
+"POST /process-message/ HTTP/1.1" 200 288
+"POST /process-message/ HTTP/1.1" 200 1501
+"POST /process-message/ HTTP/1.1" 200 234
+C:\Users\USER\mental_health_chatbot\chatbot\ai_processor.py changed, reloading.
+C:\Users\USER\mental_health_chatbot\chatbot\ai_processor.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /chat/ HTTP/1.1" 200 20043
+"GET /static/chatbot/js/chat.js HTTP/1.1" 304 0
+"POST /process-message/ HTTP/1.1" 200 314
+"POST /process-message/ HTTP/1.1" 200 209
+"POST /process-message/ HTTP/1.1" 200 284
+"GET /clear-chat/ HTTP/1.1" 302 0
+"GET /chat/ HTTP/1.1" 200 11890
+Internal Server Error: /mood-tracker/
+Traceback (most recent call last):
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\mental_health_chatbot\chatbot\views.py", line 166, in mood_tracker
+    return render(request, 'chatbot/mood_tracker.html', {
+        'recent_moods': recent_moods
+    })
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    self.unclosed_block_tag(parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 581, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 513: 'block'. Looking for one of: endblock.
+"GET /mood-tracker/ HTTP/1.1" 500 176405
+Internal Server Error: /mood-tracker/
+Traceback (most recent call last):
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\mental_health_chatbot\chatbot\views.py", line 166, in mood_tracker
+    return render(request, 'chatbot/mood_tracker.html', {
+        'recent_moods': recent_moods
+    })
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    self.unclosed_block_tag(parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 581, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 513: 'block'. Looking for one of: endblock.
+"GET /mood-tracker/ HTTP/1.1" 500 174128
+Internal Server Error: /mood-tracker/
+Traceback (most recent call last):
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\mental_health_chatbot\chatbot\views.py", line 166, in mood_tracker
+    return render(request, 'chatbot/mood_tracker.html', {
+        'recent_moods': recent_moods
+    })
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    self.unclosed_block_tag(parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 581, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 513: 'block'. Looking for one of: endblock.
+"GET /mood-tracker/ HTTP/1.1" 500 174128
+Internal Server Error: /mood-tracker/
+Traceback (most recent call last):
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\mental_health_chatbot\chatbot\views.py", line 166, in mood_tracker
+    return render(request, 'chatbot/mood_tracker.html', {
+        'recent_moods': recent_moods
+    })
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    self.unclosed_block_tag(parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 581, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 513: 'block'. Looking for one of: endblock.
+"GET /mood-tracker/ HTTP/1.1" 500 174128
+"GET /mood-tracker/ HTTP/1.1" 200 19294
+"GET /static/chatbot/js/mood-tracker.js HTTP/1.1" 200 15080
+Not Found: /mood-tracker/{% url "mood_tracker" %}
+"POST /mood-tracker/%7B%%20url%20%22mood_tracker%22%20%%7D HTTP/1.1" 404 3282
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+Not Found: /mood-tracker/{% url "mood_tracker" %}
+"POST /mood-tracker/%7B%%20url%20%22mood_tracker%22%20%%7D HTTP/1.1" 404 3282
+"GET /mood-tracker/ HTTP/1.1" 200 19392
+"GET /static/chatbot/css/style.css HTTP/1.1" 304 0
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+"GET /mood-tracker/ HTTP/1.1" 200 19385
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+Not Found: /mood-tracker/{% url "mood_tracker" %}
+"POST /mood-tracker/%7B%%20url%20%22mood_tracker%22%20%%7D HTTP/1.1" 404 3282
+"GET /mood-tracker/ HTTP/1.1" 200 19350
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+Not Found: /mood-tracker/{% url "mood_tracker" %}
+"POST /mood-tracker/%7B%%20url%20%22mood_tracker%22%20%%7D HTTP/1.1" 404 3282
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 5394
+"GET /mood-tracker/ HTTP/1.1" 200 19350
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+Not Found: /mood-tracker/{% url "mood_tracker" %}
+"POST /mood-tracker/%7B%%20url%20%22mood_tracker%22%20%%7D HTTP/1.1" 404 3282
+"GET /mood-tracker/ HTTP/1.1" 200 19350
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+"GET /static/chatbot/js/mood-tracker.js HTTP/1.1" 200 15153
+C:\Users\USER\mental_health_chatbot\chatbot\ai_processor.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 5393
+"GET /static/chatbot/css/style.css HTTP/1.1" 304 0
+"GET /chat/ HTTP/1.1" 200 11889
+"GET /static/chatbot/js/chat.js HTTP/1.1" 200 27491
+"POST /process-message/ HTTP/1.1" 200 240
+"POST /process-message/ HTTP/1.1" 200 205
+"POST /process-message/ HTTP/1.1" 200 212
+"GET /mood-tracker/ HTTP/1.1" 200 19371
+"GET /static/chatbot/js/mood-tracker.js HTTP/1.1" 200 15920
+"POST /mood-tracker/ HTTP/1.1" 200 63
+"GET /chat/ HTTP/1.1" 200 15280
+"GET /static/chatbot/js/chat.js HTTP/1.1" 304 0
+"GET /mood-tracker/ HTTP/1.1" 200 19371
+"POST /mood-tracker/ HTTP/1.1" 200 63
+"GET /resources/ HTTP/1.1" 200 20853
+"POST /mood-tracker/ HTTP/1.1" 200 63
+C:\Users\USER\mental_health_chatbot\chatbot\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\mental_health_chatbot\chatbot\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\mental_health_chatbot\chatbot\models.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /mood-tracker/ HTTP/1.1" 200 19371
+"GET /static/chatbot/js/mood-tracker.js HTTP/1.1" 304 0
+"POST /mood-tracker/ HTTP/1.1" 200 63
+C:\Users\USER\mental_health_chatbot\chatbot\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\mental_health_chatbot\chatbot\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\mental_health_chatbot\chatbot\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\mental_health_chatbot\chatbot\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /mood-tracker/
+Traceback (most recent call last):
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: chatbot_moodentry.session_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\mental_health_chatbot\chatbot\views.py", line 188, in mood_tracker
+    return render(request, 'chatbot/mood_tracker.html', {
+        'recent_moods': recent_moods
+    })
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\defaulttags.py", line 320, in render
+    if match:
+       ^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\db\models\query.py", line 412, in __bool__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\db\models\query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: chatbot_moodentry.session_id
+"GET /mood-tracker/ HTTP/1.1" 500 206531
+Internal Server Error: /mood-tracker/
+Traceback (most recent call last):
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: chatbot_moodentry.session_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\mental_health_chatbot\chatbot\views.py", line 188, in mood_tracker
+    return render(request, 'chatbot/mood_tracker.html', {
+        'recent_moods': recent_moods
+    })
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\template\defaulttags.py", line 320, in render
+    if match:
+       ^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\db\models\query.py", line 412, in __bool__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\db\models\query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\mental_health_chatbot\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: chatbot_moodentry.session_id
+"GET /mood-tracker/ HTTP/1.1" 500 206531
+C:\Users\USER\mental_health_chatbot\chatbot\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\mental_health_chatbot\chatbot\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /mood-tracker/ HTTP/1.1" 200 19371
+"GET /static/chatbot/js/mood-tracker.js HTTP/1.1" 304 0
+Internal Server Error: /mood-tracker/
+"POST /mood-tracker/ HTTP/1.1" 500 30
+Internal Server Error: /mood-tracker/
+"POST /mood-tracker/ HTTP/1.1" 500 30
+"GET / HTTP/1.1" 200 5393
+"GET /chat/ HTTP/1.1" 200 15280
+"GET /static/chatbot/js/chat.js HTTP/1.1" 304 0
+"POST /process-message/ HTTP/1.1" 200 200
+"GET /clear-chat/ HTTP/1.1" 302 0
+"GET /chat/ HTTP/1.1" 200 11889
+"POST /process-message/ HTTP/1.1" 200 281
+"POST /process-message/ HTTP/1.1" 200 1501
+"GET /clear-chat/ HTTP/1.1" 302 0
+"GET /chat/ HTTP/1.1" 200 11889
+"GET /resources/ HTTP/1.1" 200 20853
+"GET /chat/ HTTP/1.1" 200 11889
+"GET /resources/ HTTP/1.1" 200 20853
+"GET /mood-tracker/ HTTP/1.1" 200 19371
+"GET /static/chatbot/js/mood-tracker.js HTTP/1.1" 304 0
+Internal Server Error: /mood-tracker/
+"POST /mood-tracker/ HTTP/1.1" 500 30
+"GET / HTTP/1.1" 200 5393
+"GET /chat/ HTTP/1.1" 200 11889
+"GET /static/chatbot/js/chat.js HTTP/1.1" 304 0
+"GET /clear-chat/ HTTP/1.1" 302 0
+"GET /chat/ HTTP/1.1" 200 11889
+"POST /process-message/ HTTP/1.1" 200 297
+"POST /process-message/ HTTP/1.1" 200 262
+"GET /mood-tracker/ HTTP/1.1" 200 19371
+"GET /static/chatbot/js/mood-tracker.js HTTP/1.1" 304 0
+"GET /static/chatbot/css/style.css HTTP/1.1" 304 0
+Internal Server Error: /mood-tracker/
+"POST /mood-tracker/ HTTP/1.1" 500 30
+"GET /mood-tracker/ HTTP/1.1" 200 19371
+"GET / HTTP/1.1" 200 5393
+"GET /chat/ HTTP/1.1" 200 14038
+"GET /static/chatbot/js/chat.js HTTP/1.1" 304 0
+"GET /resources/ HTTP/1.1" 200 20853
+"GET /resources/ HTTP/1.1" 200 20853
+"GET / HTTP/1.1" 200 5393
+"GET /chat/ HTTP/1.1" 200 14038
+"GET /mood-tracker/ HTTP/1.1" 200 19371
+"GET /resources/ HTTP/1.1" 200 20853
+"GET / HTTP/1.1" 200 5393
+"GET /resources/ HTTP/1.1" 200 20853
+"GET / HTTP/1.1" 200 5393
+"GET /chat/ HTTP/1.1" 200 14038
+"GET /chat/ HTTP/1.1" 200 14038
+"GET /static/chatbot/js/chat.js HTTP/1.1" 304 0
+"GET / HTTP/1.1" 200 5393
+"GET /mood-tracker/ HTTP/1.1" 200 19371
+"GET /static/chatbot/js/mood-tracker.js HTTP/1.1" 304 0
+Internal Server Error: /mood-tracker/
+"POST /mood-tracker/ HTTP/1.1" 500 30
+"GET /resources/ HTTP/1.1" 200 20853
+"GET /chat/ HTTP/1.1" 200 14038
+"GET /clear-chat/ HTTP/1.1" 302 0
+"GET /chat/ HTTP/1.1" 200 11889
+"GET /chat/ HTTP/1.1" 200 11889
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 5393
+"GET /chat/ HTTP/1.1" 200 11889
+"POST /process-message/ HTTP/1.1" 200 273
+"POST /process-message/ HTTP/1.1" 200 209
+"POST /process-message/ HTTP/1.1" 200 242
+"GET /clear-chat/ HTTP/1.1" 302 0
+"GET /chat/ HTTP/1.1" 200 11889
+"POST /process-message/ HTTP/1.1" 200 223
+"GET /chat/ HTTP/1.1" 200 12578
+"GET /chat/ HTTP/1.1" 200 12578
+"GET / HTTP/1.1" 200 5393
+"GET / HTTP/1.1" 200 5393
+"GET /chat/ HTTP/1.1" 200 12578
+"GET /clear-chat/ HTTP/1.1" 302 0
+"GET /chat/ HTTP/1.1" 200 11889
+"GET /resources/ HTTP/1.1" 200 20853
+"GET /mood-tracker/ HTTP/1.1" 200 19371
+"GET /static/chatbot/js/mood-tracker.js HTTP/1.1" 304 0
+Internal Server Error: /mood-tracker/
+"POST /mood-tracker/ HTTP/1.1" 500 30
+"GET /chat/ HTTP/1.1" 200 11889
+"GET /static/chatbot/js/chat.js HTTP/1.1" 304 0
+"GET /resources/ HTTP/1.1" 200 20853
+"GET /mood-tracker/ HTTP/1.1" 200 19371
+"GET /resources/ HTTP/1.1" 200 20853
+"GET /chat/ HTTP/1.1" 200 11889
+"GET / HTTP/1.1" 200 5393
+"GET /chat/ HTTP/1.1" 200 11889
+"POST /process-message/ HTTP/1.1" 200 215
+"GET /clear-chat/ HTTP/1.1" 302 0
+"GET /chat/ HTTP/1.1" 200 11889
+"GET /chat/ HTTP/1.1" 200 11889
+"GET / HTTP/1.1" 200 5393
+"GET /resources/ HTTP/1.1" 200 20853
+"GET / HTTP/1.1" 200 5393
+"GET /mood-tracker/ HTTP/1.1" 200 19371
+"GET /static/chatbot/js/mood-tracker.js HTTP/1.1" 304 0
+"GET / HTTP/1.1" 200 5393
+"GET /resources/ HTTP/1.1" 200 20853
+"GET / HTTP/1.1" 200 5393
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 5393
+"GET /static/chatbot/css/style.css HTTP/1.1" 304 0
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 3165
+"GET / HTTP/1.1" 200 5393
+"GET /mood-tracker/ HTTP/1.1" 200 19371
+"GET /static/chatbot/js/mood-tracker.js HTTP/1.1" 200 2838
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3276
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 5393
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3403
+"GET / HTTP/1.1" 200 5393
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3403
+"GET / HTTP/1.1" 200 5393
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3403
+"GET / HTTP/1.1" 200 5393
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3403
+"GET /chat/ HTTP/1.1" 200 11889
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3403
+"GET /static/chatbot/js/chat.js HTTP/1.1" 200 27159
+"POST /process-message/ HTTP/1.1" 200 228
+"POST /process-message/ HTTP/1.1" 200 256
+"GET /resources/ HTTP/1.1" 200 20853
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3403
+"GET /mood-tracker/ HTTP/1.1" 200 19371
+"GET /static/chatbot/js/mood-tracker.js HTTP/1.1" 200 17024
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3403
+"POST /mood-tracker/ HTTP/1.1" 200 63
+"POST /mood-tracker/ HTTP/1.1" 200 63
+"GET /admin/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 4181
+"GET /static/admin/css/base.css HTTP/1.1" 200 21207
+"GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2929
+"GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2694
+"GET /static/admin/css/login.css HTTP/1.1" 200 958
+"GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+"GET /static/admin/js/theme.js HTTP/1.1" 200 1943
+"GET /static/admin/css/responsive.css HTTP/1.1" 200 18533
+"POST /admin/login/?next=/admin/ HTTP/1.1" 200 4351
+"POST /admin/login/?next=/admin/ HTTP/1.1" 200 4358
+"POST /admin/login/?next=/admin/ HTTP/1.1" 200 4351
+"POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 8053
+"GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+"GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+"GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+"GET /admin/auth/group/ HTTP/1.1" 200 9069
+"GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+"GET /static/admin/css/changelists.css HTTP/1.1" 200 6566
+"GET /static/admin/js/core.js HTTP/1.1" 200 5682
+"GET /static/admin/js/actions.js HTTP/1.1" 200 7872
+"GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+"GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 8943
+"GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 292458
+"GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+"GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 232381
+"GET /static/admin/img/search.svg HTTP/1.1" 200 458
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /static/admin/js/filters.js HTTP/1.1" 200 978
+"GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+"GET /admin/auth/user/ HTTP/1.1" 200 12270
+"GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+"GET /admin/chatbot/conversation/ HTTP/1.1" 200 12389
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/conversation/1/change/ HTTP/1.1" 200 12697
+"GET /static/admin/css/forms.css HTTP/1.1" 200 9047
+"GET /static/admin/js/calendar.js HTTP/1.1" 200 8466
+"GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19319
+"GET /static/admin/css/widgets.css HTTP/1.1" 200 11900
+"GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+"GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+"GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 677
+"GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+"GET /admin/chatbot/moodentry/ HTTP/1.1" 200 12379
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+Forbidden (CSRF token from POST incorrect.): /mood-tracker/
+"POST /mood-tracker/ HTTP/1.1" 403 2518
+"GET /mood-tracker/ HTTP/1.1" 200 20129
+"GET /static/chatbot/js/mood-tracker.js HTTP/1.1" 304 0
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3403
+"POST /mood-tracker/ HTTP/1.1" 200 63
+"GET /admin/chatbot/moodentry/ HTTP/1.1" 200 12693
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/moodentry/3/change/ HTTP/1.1" 200 14519
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"POST /mood-tracker/ HTTP/1.1" 200 63
+"GET /admin/chatbot/moodentry/ HTTP/1.1" 200 13011
+"GET /admin/chatbot/moodentry/ HTTP/1.1" 200 13011
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/moodentry/4/change/ HTTP/1.1" 200 14523
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/supportresource/ HTTP/1.1" 200 15765
+"GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/userprofile/ HTTP/1.1" 200 12442
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/userprofile/1/change/ HTTP/1.1" 200 12404
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/moodentry/ HTTP/1.1" 200 13011
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/message/ HTTP/1.1" 200 13649
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/supportresource/ HTTP/1.1" 200 15765
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/userprofile/ HTTP/1.1" 200 12442
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/userprofile/1/change/ HTTP/1.1" 200 12404
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/moodentry/ HTTP/1.1" 200 13011
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /mood-tracker/ HTTP/1.1" 200 23233
+"GET /static/chatbot/js/mood-tracker.js HTTP/1.1" 304 0
+"GET / HTTP/1.1" 200 6151
+"GET /admin/ HTTP/1.1" 200 8053
+"GET /mood-tracker/ HTTP/1.1" 200 23233
+"POST /mood-tracker/ HTTP/1.1" 200 63
+"GET /mood-tracker/ HTTP/1.1" 200 24856
+"GET /admin/chatbot/supportresource/ HTTP/1.1" 200 15765
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/userprofile/ HTTP/1.1" 200 12442
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/conversation/ HTTP/1.1" 200 12389
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/userprofile/ HTTP/1.1" 200 12442
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /chat/ HTTP/1.1" 200 14708
+"GET /static/chatbot/js/chat.js HTTP/1.1" 304 0
+"GET /clear-chat/ HTTP/1.1" 302 0
+"GET /chat/ HTTP/1.1" 200 12647
+"GET /admin/chatbot/conversation/ HTTP/1.1" 200 12826
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/conversation/ HTTP/1.1" 200 12826
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/conversation/ HTTP/1.1" 200 12826
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/conversation/ HTTP/1.1" 200 12826
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/conversation/2/change/ HTTP/1.1" 200 12697
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/conversation/ HTTP/1.1" 200 12826
+"GET /admin/chatbot/message/ HTTP/1.1" 200 13649
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/message/ HTTP/1.1" 200 13649
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/ HTTP/1.1" 200 8053
+"GET /resources/ HTTP/1.1" 200 21611
+"GET / HTTP/1.1" 200 6151
+"GET /chat/ HTTP/1.1" 200 12647
+"GET /static/chatbot/js/chat.js HTTP/1.1" 304 0
+"POST /process-message/ HTTP/1.1" 200 259
+"POST /process-message/ HTTP/1.1" 200 215
+"GET /clear-chat/ HTTP/1.1" 302 0
+"GET /chat/ HTTP/1.1" 200 12647
+"GET /mood-tracker/ HTTP/1.1" 200 24856
+"GET /static/chatbot/js/mood-tracker.js HTTP/1.1" 304 0
+"POST /mood-tracker/ HTTP/1.1" 200 63
+"GET /mood-tracker/ HTTP/1.1" 200 26465
+"GET / HTTP/1.1" 200 6151
+"GET /admin/ HTTP/1.1" 200 8053
+"GET /admin/chatbot/supportresource/ HTTP/1.1" 200 15765
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/userprofile/ HTTP/1.1" 200 12442
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/message/ HTTP/1.1" 200 15316
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/moodentry/ HTTP/1.1" 200 13644
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/moodentry/6/change/ HTTP/1.1" 200 14627
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/moodentry/ HTTP/1.1" 200 13644
+"GET /admin/chatbot/message/ HTTP/1.1" 200 15316
+"GET /admin/chatbot/userprofile/ HTTP/1.1" 200 12442
+"GET /admin/chatbot/message/ HTTP/1.1" 200 15316
+"GET /admin/chatbot/moodentry/ HTTP/1.1" 200 13644
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/supportresource/ HTTP/1.1" 200 15765
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/moodentry/ HTTP/1.1" 200 13644
+"GET /admin/chatbot/message/ HTTP/1.1" 200 15316
+"GET /admin/chatbot/userprofile/ HTTP/1.1" 200 12442
+"GET /admin/chatbot/supportresource/ HTTP/1.1" 200 15765
+"GET /admin/ HTTP/1.1" 200 8053
+"GET /chat/ HTTP/1.1" 200 12647
+"GET /mood-tracker/ HTTP/1.1" 200 26465
+"GET / HTTP/1.1" 200 6151
+"GET /admin/ HTTP/1.1" 200 8053
+"GET /admin/ HTTP/1.1" 200 8053
+"GET /admin/ HTTP/1.1" 200 8053
+"GET /admin/auth/user/ HTTP/1.1" 200 12270
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/ HTTP/1.1" 200 8053
+"GET /resources/ HTTP/1.1" 200 21611
+"GET /chat/ HTTP/1.1" 200 12647
+"GET /static/chatbot/js/chat.js HTTP/1.1" 304 0
+"POST /process-message/ HTTP/1.1" 200 227
+"POST /process-message/ HTTP/1.1" 200 227
+"POST /process-message/ HTTP/1.1" 200 216
+"POST /process-message/ HTTP/1.1" 200 203
+"GET /clear-chat/ HTTP/1.1" 302 0
+"GET /chat/ HTTP/1.1" 200 12647
+"GET / HTTP/1.1" 200 6151
+"GET /mood-tracker/ HTTP/1.1" 200 26465
+"GET /static/chatbot/js/mood-tracker.js HTTP/1.1" 304 0
+"GET /resources/ HTTP/1.1" 200 21611
+"GET /mood-tracker/ HTTP/1.1" 200 26465
+"POST /mood-tracker/ HTTP/1.1" 200 63
+"GET /mood-tracker/ HTTP/1.1" 200 27803
+"GET /static/chatbot/js/mood-tracker.js HTTP/1.1" 304 0
+"GET / HTTP/1.1" 200 6151
+"GET /chat/ HTTP/1.1" 200 12647
+"GET /static/chatbot/js/chat.js HTTP/1.1" 304 0
+"POST /process-message/ HTTP/1.1" 200 216
+"GET /mood-tracker/ HTTP/1.1" 200 27803
+"POST /mood-tracker/ HTTP/1.1" 200 63
+"GET /mood-tracker/ HTTP/1.1" 200 29141
+"GET /resources/ HTTP/1.1" 200 21611
+"GET /resources/ HTTP/1.1" 200 21611
+"GET /static/chatbot/css/style.css HTTP/1.1" 200 4127
+"GET /mood-tracker/ HTTP/1.1" 200 29141
+"GET /static/chatbot/js/mood-tracker.js HTTP/1.1" 304 0
+"GET /resources/ HTTP/1.1" 200 21611
+"GET /mood-tracker/ HTTP/1.1" 200 29141
+"GET /chat/ HTTP/1.1" 200 13320
+"GET /static/chatbot/js/chat.js HTTP/1.1" 304 0
+"GET /admin/ HTTP/1.1" 200 8053
+"GET /admin/chatbot/supportresource/ HTTP/1.1" 200 15765
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/userprofile/ HTTP/1.1" 200 12442
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/conversation/ HTTP/1.1" 200 13698
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/message/ HTTP/1.1" 200 19518
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/conversation/ HTTP/1.1" 200 13698
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/conversation/3/change/ HTTP/1.1" 200 12725
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/supportresource/ HTTP/1.1" 200 15765
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/supportresource/5/change/ HTTP/1.1" 200 13143
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 6151
+"GET /static/chatbot/css/style.css HTTP/1.1" 200 4127
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 3292
+"GET /chat/ HTTP/1.1" 200 13320
+"GET /static/chatbot/js/chat.js HTTP/1.1" 200 27159
+"GET /clear-chat/ HTTP/1.1" 302 0
+"GET /chat/ HTTP/1.1" 200 12647
+"GET /chat/ HTTP/1.1" 200 12647
+"GET /chat/ HTTP/1.1" 200 12647
+"GET /chat/ HTTP/1.1" 200 12647
+"GET /chat/ HTTP/1.1" 200 12647
+"GET /chat/ HTTP/1.1" 200 12647
+Internal Server Error: /process-message/
+"POST /process-message/ HTTP/1.1" 500 54
+Internal Server Error: /process-message/
+"POST /process-message/ HTTP/1.1" 500 54
+Internal Server Error: /process-message/
+"POST /process-message/ HTTP/1.1" 500 54
+Internal Server Error: /process-message/
+"POST /process-message/ HTTP/1.1" 500 54
+Internal Server Error: /process-message/
+"POST /process-message/ HTTP/1.1" 500 54
+Internal Server Error: /process-message/
+"POST /process-message/ HTTP/1.1" 500 54
+C:\Users\USER\mental_health_chatbot\chatbot\ai_processor.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\mental_health_chatbot\chatbot\ai_processor.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 6151
+"GET /chat/ HTTP/1.1" 200 15839
+"GET /chat/ HTTP/1.1" 200 15839
+"GET /chat/ HTTP/1.1" 200 15839
+"GET /chat/ HTTP/1.1" 200 15839
+"GET /chat/ HTTP/1.1" 200 15839
+C:\Users\USER\mental_health_chatbot\chatbot\ai_processor.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /chat/ HTTP/1.1" 200 15839
+"GET /chat/ HTTP/1.1" 200 15839
+"GET /chat/ HTTP/1.1" 200 15839
+"GET /chat/ HTTP/1.1" 200 15839
+"GET /chat/ HTTP/1.1" 200 15839
+"GET /chat/ HTTP/1.1" 200 15839
+"GET /chat/ HTTP/1.1" 200 15839
+"GET /chat/ HTTP/1.1" 200 15839
+"GET /chat/ HTTP/1.1" 200 15839
+"GET /clear-chat/ HTTP/1.1" 302 0
+"GET /chat/ HTTP/1.1" 200 12647
+"POST /process-message/ HTTP/1.1" 200 260
+"POST /process-message/ HTTP/1.1" 200 283
+C:\Users\USER\mental_health_chatbot\chatbot\ai_processor.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 6151
+"GET /chat/ HTTP/1.1" 200 14775
+"GET /chat/ HTTP/1.1" 200 14775
+"GET /chat/ HTTP/1.1" 200 14775
+C:\Users\USER\mental_health_chatbot\chatbot\ai_processor.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\mental_health_chatbot\chatbot\ai_processor.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 6151
+"GET /chat/ HTTP/1.1" 200 14775
+"GET /chat/ HTTP/1.1" 200 14775
+"GET /chat/ HTTP/1.1" 200 14775
+"POST /process-message/ HTTP/1.1" 200 312
+"GET /mood-tracker/ HTTP/1.1" 200 29141
+"GET /static/chatbot/js/mood-tracker.js HTTP/1.1" 200 17024
+"GET /chat/ HTTP/1.1" 200 16242
+"GET /admin/ HTTP/1.1" 200 8053
+"GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2929
+"GET /static/admin/css/base.css HTTP/1.1" 200 21207
+"GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2694
+"GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+"GET /static/admin/css/responsive.css HTTP/1.1" 200 18533
+"GET /static/admin/js/theme.js HTTP/1.1" 200 1943
+"GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+"GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+"GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+"GET /admin/chatbot/moodentry/ HTTP/1.1" 200 14276
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /static/admin/css/changelists.css HTTP/1.1" 200 6566
+"GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+"GET /static/admin/js/core.js HTTP/1.1" 200 5682
+"GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+"GET /static/admin/js/actions.js HTTP/1.1" 200 7872
+"GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+"GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 8943
+"GET /static/admin/img/search.svg HTTP/1.1" 200 458
+"GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 292458
+"GET /static/admin/js/filters.js HTTP/1.1" 200 978
+"GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 232381
+"GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+"GET /admin/chatbot/moodentry/8/change/ HTTP/1.1" 200 14779
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+"GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+"GET /static/admin/css/forms.css HTTP/1.1" 200 9047
+"GET /static/admin/css/widgets.css HTTP/1.1" 200 11900
+"GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+"GET /admin/chatbot/moodentry/8/delete/ HTTP/1.1" 200 8778
+"GET /static/admin/js/cancel.js HTTP/1.1" 200 884
+"POST /admin/chatbot/moodentry/8/delete/ HTTP/1.1" 302 0
+"GET /admin/chatbot/moodentry/ HTTP/1.1" 200 14133
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+"GET /admin/chatbot/moodentry/2/change/ HTTP/1.1" 200 14787
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/moodentry/2/delete/ HTTP/1.1" 200 8778
+"POST /admin/chatbot/moodentry/2/delete/ HTTP/1.1" 302 0
+"GET /admin/chatbot/moodentry/ HTTP/1.1" 200 13822
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/moodentry/1/change/ HTTP/1.1" 200 14779
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/moodentry/1/delete/ HTTP/1.1" 200 8778
+"POST /admin/chatbot/moodentry/1/delete/ HTTP/1.1" 302 0
+"GET /admin/chatbot/moodentry/ HTTP/1.1" 200 13509
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/moodentry/3/change/ HTTP/1.1" 200 14779
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/moodentry/3/delete/ HTTP/1.1" 200 8778
+"POST /admin/chatbot/moodentry/3/delete/ HTTP/1.1" 302 0
+"GET /admin/chatbot/moodentry/ HTTP/1.1" 200 13195
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/moodentry/4/change/ HTTP/1.1" 200 14783
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/moodentry/4/delete/ HTTP/1.1" 200 8778
+"POST /admin/chatbot/moodentry/4/delete/ HTTP/1.1" 302 0
+"GET /admin/chatbot/moodentry/ HTTP/1.1" 200 12877
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/moodentry/5/change/ HTTP/1.1" 200 14792
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/moodentry/5/delete/ HTTP/1.1" 200 8778
+"POST /admin/chatbot/moodentry/5/delete/ HTTP/1.1" 302 0
+"GET /admin/chatbot/moodentry/ HTTP/1.1" 200 12558
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/moodentry/6/change/ HTTP/1.1" 200 14783
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/chatbot/moodentry/6/delete/ HTTP/1.1" 200 8778
+"POST /admin/chatbot/moodentry/6/delete/ HTTP/1.1" 302 0
+"GET /admin/chatbot/moodentry/ HTTP/1.1" 200 12243
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/ HTTP/1.1" 200 9906
+"GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+"GET /admin/ HTTP/1.1" 200 9906
+"GET /admin/chatbot/moodentry/ HTTP/1.1" 200 12070
+"GET /admin/chatbot/moodentry/6/delete/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 10079
+"GET /static/admin/img/icon-alert.svg HTTP/1.1" 200 504
+"GET /admin/chatbot/moodentry/6/change/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 10079
+"GET /admin/chatbot/moodentry/ HTTP/1.1" 200 12070
+"GET /admin/chatbot/moodentry/5/delete/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 10079
+"GET /admin/chatbot/moodentry/5/change/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 10079
+"GET /admin/chatbot/moodentry/ HTTP/1.1" 200 12070
+"GET /admin/chatbot/moodentry/4/delete/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 10079
+"GET / HTTP/1.1" 200 6151
+"GET / HTTP/1.1" 200 6151
+"GET / HTTP/1.1" 200 6151
+"GET / HTTP/1.1" 200 6151
+"GET /mood-tracker/ HTTP/1.1" 200 21622
+"POST /mood-tracker/ HTTP/1.1" 200 63
+"GET /mood-tracker/ HTTP/1.1" 200 22960
+"GET / HTTP/1.1" 200 6151
+"GET /chat/ HTTP/1.1" 200 16242
+"POST /process-message/ HTTP/1.1" 200 250
+"POST /process-message/ HTTP/1.1" 200 215
+C:\Users\USER\mental_health_chatbot\chatbot\ai_processor.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 6151
+"GET /static/chatbot/css/style.css HTTP/1.1" 304 0
+"GET /chat/ HTTP/1.1" 200 19004
+"GET /static/chatbot/js/chat.js HTTP/1.1" 304 0
+"GET /chat/ HTTP/1.1" 200 19004
+"GET /chat/ HTTP/1.1" 200 19004
+"GET /clear-chat/ HTTP/1.1" 302 0
+"GET /chat/ HTTP/1.1" 200 12647
+"GET /chat/ HTTP/1.1" 200 12647
+"GET /chat/ HTTP/1.1" 200 12647
+"GET /chat/ HTTP/1.1" 200 12647
+"GET /chat/ HTTP/1.1" 200 12647
+"POST /process-message/ HTTP/1.1" 200 206
+"POST /process-message/ HTTP/1.1" 200 210
+"POST /process-message/ HTTP/1.1" 200 205
+"POST /process-message/ HTTP/1.1" 200 223
+"POST /process-message/ HTTP/1.1" 200 287
+"POST /process-message/ HTTP/1.1" 200 206
+"POST /process-message/ HTTP/1.1" 200 205
+"POST /process-message/ HTTP/1.1" 200 284
+"POST /process-message/ HTTP/1.1" 200 206
+"POST /process-message/ HTTP/1.1" 200 233
+"POST /process-message/ HTTP/1.1" 200 192
+"POST /process-message/ HTTP/1.1" 200 227
+"POST /process-message/ HTTP/1.1" 200 192
+"POST /process-message/ HTTP/1.1" 200 232
+"POST /process-message/ HTTP/1.1" 200 291
+"POST /process-message/ HTTP/1.1" 200 240
+"POST /process-message/ HTTP/1.1" 200 237
+"POST /process-message/ HTTP/1.1" 200 215
+"POST /process-message/ HTTP/1.1" 200 197
+"POST /process-message/ HTTP/1.1" 200 215
+"GET /clear-chat/ HTTP/1.1" 302 0
+"GET /chat/ HTTP/1.1" 200 12647
+"GET /chat/ HTTP/1.1" 200 12647
+"GET /chat/ HTTP/1.1" 200 12647
+"POST /process-message/ HTTP/1.1" 200 215
+"POST /process-message/ HTTP/1.1" 200 251
+"POST /process-message/ HTTP/1.1" 200 218
+"POST /process-message/ HTTP/1.1" 200 202
+"POST /process-message/ HTTP/1.1" 200 223
+"POST /process-message/ HTTP/1.1" 200 210
+"POST /process-message/ HTTP/1.1" 200 206
+"POST /process-message/ HTTP/1.1" 200 210
+"POST /process-message/ HTTP/1.1" 200 243
+"GET /clear-chat/ HTTP/1.1" 302 0
+"GET /chat/ HTTP/1.1" 200 12647
+"GET /resources/ HTTP/1.1" 200 21611
+"GET /mood-tracker/ HTTP/1.1" 200 22960
+"GET /chat/ HTTP/1.1" 200 12647
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 6151
+"GET /chat/ HTTP/1.1" 200 12647
+"POST /process-message/ HTTP/1.1" 200 202
+"POST /process-message/ HTTP/1.1" 200 239
+"POST /process-message/ HTTP/1.1" 200 192
+"POST /process-message/ HTTP/1.1" 200 211
+"GET /clear-chat/ HTTP/1.1" 302 0
+"GET /chat/ HTTP/1.1" 200 12647
+"GET /mood-tracker/ HTTP/1.1" 200 22960
+"POST /mood-tracker/ HTTP/1.1" 200 63
+"GET /mood-tracker/ HTTP/1.1" 200 24296
+"GET /resources/ HTTP/1.1" 200 21611
+"GET / HTTP/1.1" 200 6151
+"GET /chat/ HTTP/1.1" 200 12647
+"GET /mood-tracker/ HTTP/1.1" 200 24296
+"GET /resources/ HTTP/1.1" 200 21611
+"GET /chat/ HTTP/1.1" 200 12647
+"GET /resources/ HTTP/1.1" 200 21611
+"GET /resources/ HTTP/1.1" 200 21611
+"GET /mood-tracker/ HTTP/1.1" 200 24296
+"GET /resources/ HTTP/1.1" 200 21611
+"GET /mood-tracker/ HTTP/1.1" 200 24296
+"GET /resources/ HTTP/1.1" 200 21611
+"GET /mood-tracker/ HTTP/1.1" 200 24296
+"GET /resources/ HTTP/1.1" 200 21611
+"GET /mood-tracker/ HTTP/1.1" 200 24296
+"GET /resources/ HTTP/1.1" 200 21611
+"GET /mood-tracker/ HTTP/1.1" 200 24296
+"GET /chat/ HTTP/1.1" 200 12647
+"GET / HTTP/1.1" 200 6151
+"GET /mood-tracker/ HTTP/1.1" 200 24296
+"GET /resources/ HTTP/1.1" 200 21611
+"GET /resources/ HTTP/1.1" 200 21611
+"GET /mood-tracker/ HTTP/1.1" 200 24296
+"GET /resources/ HTTP/1.1" 200 21611
+"GET /mood-tracker/ HTTP/1.1" 200 24296
+"GET /chat/ HTTP/1.1" 200 12647
+"GET / HTTP/1.1" 200 6151
+"GET /static/chatbot/css/style.css HTTP/1.1" 304 0
+"GET /chat/ HTTP/1.1" 200 12647
+"GET /static/chatbot/js/chat.js HTTP/1.1" 304 0
+"POST /process-message/ HTTP/1.1" 200 216
+"POST /process-message/ HTTP/1.1" 200 257
+"POST /process-message/ HTTP/1.1" 200 193
+"POST /process-message/ HTTP/1.1" 200 193
+"POST /process-message/ HTTP/1.1" 200 207
+"POST /process-message/ HTTP/1.1" 200 224
+"POST /process-message/ HTTP/1.1" 200 165
+"GET /mood-tracker/ HTTP/1.1" 200 24296
+"GET /static/chatbot/js/mood-tracker.js HTTP/1.1" 304 0
+"POST /mood-tracker/ HTTP/1.1" 200 63
+"GET /mood-tracker/ HTTP/1.1" 200 25636
+"GET /resources/ HTTP/1.1" 200 21611
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 5393
+"GET /static/chatbot/css/style.css HTTP/1.1" 304 0
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 3292
+"GET /chat/ HTTP/1.1" 200 11889
+"GET /static/chatbot/js/chat.js HTTP/1.1" 304 0
+"POST /process-message/ HTTP/1.1" 200 193
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 5393
+"GET /chat/ HTTP/1.1" 200 12535
+"GET /clear-chat/ HTTP/1.1" 302 0
+"GET /chat/ HTTP/1.1" 200 11889
+Internal Server Error: /process-message/
+"POST /process-message/ HTTP/1.1" 500 54
+Internal Server Error: /process-message/
+"POST /process-message/ HTTP/1.1" 500 54
+Internal Server Error: /process-message/
+"POST /process-message/ HTTP/1.1" 500 54
+C:\Users\USER\mental_health_chatbot\chatbot\ai_processor.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 5393
+"GET /chat/ HTTP/1.1" 200 13149
+"GET /chat/ HTTP/1.1" 200 13149
+"GET /chat/ HTTP/1.1" 200 13149
+"GET /clear-chat/ HTTP/1.1" 302 0
+"GET /chat/ HTTP/1.1" 200 11889
+Internal Server Error: /process-message/
+"POST /process-message/ HTTP/1.1" 500 54
+Internal Server Error: /process-message/
+"POST /process-message/ HTTP/1.1" 500 54
+Internal Server Error: /process-message/
+"POST /process-message/ HTTP/1.1" 500 54
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 5393
+"GET /chat/ HTTP/1.1" 200 13140
+"GET /clear-chat/ HTTP/1.1" 302 0
+"GET /chat/ HTTP/1.1" 200 11889
+"POST /process-message/ HTTP/1.1" 200 203
+"POST /process-message/ HTTP/1.1" 200 211
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 5393
+"GET /chat/ HTTP/1.1" 200 11889
+"POST /process-message/ HTTP/1.1" 200 222
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 5393
+"GET /static/chatbot/css/style.css HTTP/1.1" 304 0
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 3292
+"GET /chat/ HTTP/1.1" 200 11889
+"GET /static/chatbot/js/chat.js HTTP/1.1" 304 0
+"POST /process-message/ HTTP/1.1" 200 205
+"GET /mood-tracker/ HTTP/1.1" 200 19371
+"GET /static/chatbot/js/mood-tracker.js HTTP/1.1" 200 17024
+"POST /mood-tracker/ HTTP/1.1" 200 63
+"GET /mood-tracker/ HTTP/1.1" 200 21143
+"GET /resources/ HTTP/1.1" 200 20853
+"GET / HTTP/1.1" 200 5393
+"GET /mood-tracker/ HTTP/1.1" 200 21143
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 5393
+"GET /static/chatbot/css/style.css HTTP/1.1" 200 4127
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 3292
+"GET /chat/ HTTP/1.1" 200 11889
+"GET /static/chatbot/js/chat.js HTTP/1.1" 200 27159
+"POST /process-message/ HTTP/1.1" 200 225
+"POST /process-message/ HTTP/1.1" 200 1501
+"POST /process-message/ HTTP/1.1" 200 206
+"POST /process-message/ HTTP/1.1" 200 215
+"POST /process-message/ HTTP/1.1" 200 226
+"GET /clear-chat/ HTTP/1.1" 302 0
+"GET /chat/ HTTP/1.1" 200 11889
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 5393
+"GET /chat/ HTTP/1.1" 200 11889
+"GET /mood-tracker/ HTTP/1.1" 200 19371
+"GET /static/chatbot/js/mood-tracker.js HTTP/1.1" 200 17024
+"POST /mood-tracker/ HTTP/1.1" 200 63
+"GET /mood-tracker/ HTTP/1.1" 200 21148
+"GET /resources/ HTTP/1.1" 200 20853
+"GET /chat/ HTTP/1.1" 200 11889
