@@ -9,26 +9,12 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'chatbot/css/style.css' %}">
     <style>
-        .navbar {
-            z-index: 1030 !important;
-        }
         .dropdown-menu {
             background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 10px;
-            z-index: 1060 !important;
-            position: absolute !important;
-        }
-        .dropdown {
-            position: relative;
-            z-index: 1060 !important;
-        }
-        .navbar-nav .dropdown-toggle::after {
-            border-top: 0.3em solid;
-            border-right: 0.3em solid transparent;
-            border-bottom: 0;
-            border-left: 0.3em solid transparent;
+            z-index: 1050 !important;
         }
     </style>
     {% block extra_css %}{% endblock %}
@@ -50,6 +36,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'chat' %}"><i class="fas fa-comments"></i> Chat</a>
                     </li>
+                    {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'mood_tracker' %}">
                             <i class="fas fa-heart"></i> Mood Tracker
@@ -60,6 +47,7 @@
                             <i class="fas fa-life-ring"></i> Resources
                         </a>
                     </li>
+                    {% endif %}
                 </ul>
 
                 <!-- User Authentication Links -->
