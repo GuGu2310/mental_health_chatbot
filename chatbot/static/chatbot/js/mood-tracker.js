@@ -552,7 +552,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Add handleKeyPress function
 // Global function for handling key press events
 function handleKeyPress(event) {
     if (event.key === 'Enter') {
