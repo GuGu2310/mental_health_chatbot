@@ -1,32 +1,13 @@
+{% extends 'chatbot/base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mental Health Support Chatbot</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-        }
-        .hero-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="hero-card text-center p-5">
+{% block title %}Welcome - Mental Health Support Chatbot{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card text-center">
+                <div class="card-body p-5">
                     <div class="mb-4">
                         <i class="fas fa-brain fa-4x text-primary mb-3"></i>
                         <h1 class="display-4 fw-bold text-primary">Mental Health Support</h1>
@@ -52,27 +33,25 @@
                     </div>
                     
                     <div class="d-grid gap-3 d-md-block">
-                        <a href="/chat/" class="btn btn-primary btn-lg">
+                        <a href="{% url 'chat' %}" class="btn btn-primary btn-lg">
                             <i class="fas fa-comments"></i> Start Chatting
                         </a>
-                        <a href="/register/" class="btn btn-outline-primary btn-lg">
-                            <i class="fas fa-user-plus"></i> Sign Up
+                        <a href="{% url 'mood_tracker' %}" class="btn btn-outline-primary btn-lg">
+                            <i class="fas fa-heart"></i> Track Mood
                         </a>
-                        <a href="/login/" class="btn btn-outline-secondary btn-lg">
-                            <i class="fas fa-sign-in-alt"></i> Login
+                        <a href="{% url 'resources' %}" class="btn btn-outline-secondary btn-lg">
+                            <i class="fas fa-life-ring"></i> Get Resources
                         </a>
-                    </div>
-                    
-                    <div class="alert alert-warning mt-4" role="alert">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <strong>Important:</strong> This chatbot provides support but is not a replacement for professional mental health care. 
-                        If you're experiencing a mental health emergency, please call <strong>988</strong> or <strong>911</strong> immediately.
                     </div>
                 </div>
             </div>
+            
+            <div class="alert alert-warning mt-4" role="alert">
+                <i class="fas fa-exclamation-triangle"></i>
+                <strong>Important:</strong> This chatbot provides support but is not a replacement for professional mental health care. 
+                If you're experiencing a mental health emergency, please call <strong>988</strong> or <strong>911</strong> immediately.
+            </div>
         </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+</div>
+{% endblock %}
