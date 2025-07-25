@@ -11,7 +11,7 @@ SECRET_KEY = config('SECRET_KEY', default='django-insecure-change-this-key-in-pr
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', '.replit.dev']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', '.replit.dev', '.replit.app', '.replit.co']
 
 # Application definition
 INSTALLED_APPS = [
@@ -41,7 +41,7 @@ ROOT_URLCONF = 'chatbot_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -89,10 +89,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    # Remove this line: BASE_DIR / 'chatbot' / 'static',
-    # Django's staticfiles app will find files in 'chatbot/static/' automatically
-    # because 'chatbot' is in INSTALLED_APPS.
-    # You would only list *additional* global static folders here.
+    BASE_DIR / 'static',
 ]
 
 # This is where 'collectstatic' will gather all static files for deployment.
