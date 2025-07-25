@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 
 def index(request):
     """Landing page"""
-    return render(request, 'chatbot/index.html')
+    return render(request, 'index.html')
 
 def chat_view(request):
     """Main chat interface"""
