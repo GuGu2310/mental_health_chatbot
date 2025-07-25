@@ -11,7 +11,17 @@ SECRET_KEY = config('SECRET_KEY', default='django-insecure-change-this-key-in-pr
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', '.replit.dev', '.replit.app', '.replit.co']
+# Updated ALLOWED_HOSTS for Render deployment
+ALLOWED_HOSTS = [
+    'localhost', 
+    '127.0.0.1', 
+    '0.0.0.0', 
+    '.replit.dev', 
+    '.replit.app', 
+    '.replit.co',
+    'mental-ai-d0o2.onrender.com',  # Add your Render domain
+    '.onrender.com',  # Allow all onrender.com subdomains
+]
 
 # Application definition
 INSTALLED_APPS = [
@@ -27,6 +37,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Add this for static files on Render
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -56,13 +67,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'chatbot_project.wsgi.application'
 
-# Database
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+# Database - Updated for Render
+if 'DATABASE_URL' in os.environ:
+    import dj_database_url
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -86,19 +103,19 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
+# Static files (CSS, JavaScript, Images) - Updated for Render
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
 # This is where 'collectstatic' will gather all static files for deployment.
-# It should be an absolute path, and it should NOT be inside any of your app directories.
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
+# Add WhiteNoise configuration for static files
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+# Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Login URL for @login_required decorator
@@ -108,28 +125,29 @@ LOGIN_URL = '/login/'
 SESSION_COOKIE_AGE = 86400  # 24 hours
 SESSION_SAVE_EVERY_REQUEST = True
 
-# CORS settings
+# CORS settings - Updated for Render
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:8000",
+    "https://mental-ai-d0o2.onrender.com",  # Add your Render domain
 ]
 
-# CSRF settings
+# CSRF settings - Updated for Render
 CSRF_TRUSTED_ORIGINS = [
     'https://*.replit.dev',
     'https://*.replit.app',
     'https://*.replit.co',
+    'https://mental-ai-d0o2.onrender.com',  # Add your Render domain
+    'https://*.onrender.com',  # Allow all onrender.com subdomains
 ]
 
 # Additional security settings for deployment
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None
-CSRF_COOKIE_SECURE = False  # Set to True if using HTTPS only
-SESSION_COOKIE_SECURE = False  # Set to True if using HTTPS only
+CSRF_COOKIE_SECURE = not DEBUG  # True in production (HTTPS)
+SESSION_COOKIE_SECURE = not DEBUG  # True in production (HTTPS)
 
 # OpenAI Configuration
 OPENAI_API_KEY = config('OPENAI_API_KEY', default='')
-#Gemini AI Configuration
-#GEMINI_API_KEY = config('GEMINI_API_KEY', default='')
 
 # Logging
 LOGGING = {
