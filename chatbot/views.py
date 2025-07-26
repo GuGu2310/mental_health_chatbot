@@ -286,3 +286,5 @@ def delete_mood_entry(request, mood_id):
         return JsonResponse({'status': 'success', 'message': 'Mood entry deleted successfully!'})
 
     return JsonResponse({'error': 'Invalid request method'}, status=405)
+
+# Updated admin functionality
