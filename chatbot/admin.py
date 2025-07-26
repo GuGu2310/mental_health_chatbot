@@ -36,3 +36,6 @@ class SupportResourceAdmin(admin.ModelAdmin):
     list_display = ['title', 'category', 'is_emergency', 'created_at']
     list_filter = ['category', 'is_emergency', 'created_at']
     search_fields = ['title', 'description']
+
+
+    #nothing
